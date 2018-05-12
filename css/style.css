@@ -1,0 +1,25 @@
+body {
+  background-color: #ddd; }
+
+.navbar {
+  opacity: 0.9; }
+
+.carousel-item {
+  height: 500px; }
+
+.carousel-image-1 {
+  background: url("../img/bless-1.jpg");
+  background-size: cover; }
+
+.carousel-image-2 {
+  background: url("../img/bd-1.jpg");
+  background-size: cover; }
+
+.carousel-image-3 {
+  background: url("../img/wow-1.jpg");
+  background-size: cover; }
+
+.topic:hover {
+  background: #eee; }
+
+/*# sourceMappingURL=style.css.map */
