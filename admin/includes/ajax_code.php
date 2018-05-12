@@ -29,7 +29,6 @@ if(isset($_POST['update'])) {
     foreach ($role_permissions->permissions as $key => $value) $old_perm[] = $key;
     foreach(array_diff($old_perm, $role_perm_names) as $diff_item)
         $role->deleteRolePerm(Permission::find_by_name($diff_item)->id);
-    //echo json_encode([$role, $role_permissions]);
 }
 if(isset($_POST['delete'])) {
     // Delete role & update DOM
@@ -46,8 +45,5 @@ if(isset($_POST['delete_user'])) {
 
 if(isset($_POST['update_user_role'])) {
     $user = User::find($_POST['user_id']);
-    //if($user->setRole($_POST['role_id']))
-        //echo json_encode($user);
-        //else echo json_encode($user);
-        $user->setRole($_POST['role_id']);
+    $user->setRole($_POST['role_id']);
 }

@@ -19,4 +19,10 @@ __permissions__: id, name, created_at, updated_at
 __role_perm__: role_id, perm_id
 
 __user_role__: user_id, role_id
+
+__board_list__: id, title, created_at, updated_at
+
+__topics__: id, title, description, created_at, updated_at
+
+__board_list_topics__: list_id, topic_id
 ```

@@ -37,15 +37,15 @@ if(isset($_POST['signin']))
                 <form action="includes/signin_modal.php" method="POST">
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input id="username" name="user_username" type="text" placeholder="Username" class="form-control">
+                        <input id="username" name="user_username" type="text" placeholder="Username" class="form-control"/>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input id="password" name="user_password" type="password" placeholder="Password" class="form-control">
+                        <input id="password" name="user_password" type="password" placeholder="Password" class="form-control"/>
                     </div>
                     <div class="modal-footer pb-0">
                     <button class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <input type="submit" name="signin" class="btn btn-primary" value="Sign In">
+                    <input type="submit" name="signin" class="btn btn-primary" value="Sign In"/>
                     </div>
                 </form>
             </div>

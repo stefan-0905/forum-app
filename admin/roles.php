@@ -80,6 +80,7 @@ if((isset($_GET['role_id']))) {
                 <hr>
 
                 <?php
+                if(!empty($permissions)) {
                 $i = 0;
                 foreach ($permissions as $permission) : ?>
                 <div class="form-group form-check">
@@ -90,7 +91,7 @@ if((isset($_GET['role_id']))) {
                     <?php endif; ?>
                     <label class="form-check-label" for="<?php echo "checkbox" . $i; ?>"><?php echo $permission->name; ?></label>
                 </div>
-                <?php endforeach; ?>
+                <?php endforeach; } ?>
             </form>
         </div>
         <div class="col-md-5">
@@ -99,8 +100,9 @@ if((isset($_GET['role_id']))) {
                 <table class="table table-hover">
                     <thead><tr><th>Name</th><th>Controls</th></tr></thead>
                     <tbody id="role_tb">
-                    <?php foreach ($roles as $role) : ?>
-
+                    <?php 
+                    if(!empty($roles)) {
+                    foreach ($roles as $role) : ?>
                         <tr>
                             <td><?php echo $role->name; ?></td>
                             <td>
@@ -108,8 +110,7 @@ if((isset($_GET['role_id']))) {
                                 <a data-id="<?php echo $role->id; ?>" class="delete_role text-danger"><i class="fa fa-times"></i></a>
                             </td>
                         </tr>
-
-                    <?php endforeach; ?>
+                    <?php endforeach; } ?>
                     </tbody>
                 </table>
             </div>

@@ -1,10 +1,5 @@
 <?php
 
-defined("DS") ? NULL : define("DS", DIRECTORY_SEPARATOR); // DS represents Directory Separator
-
-define('SITE_ROOT', 'C:'.DS.'xampp'.DS.'htdocs'.DS.'Gallery');
-defined('INCLUDES_PATH') ? NULL : define('INCLUDES_PATH', SITE_ROOT.DS.'admin'.DS.'includes');
-
 require_once "functions.php";
 require_once "db_config.php";
 require_once "database.php";

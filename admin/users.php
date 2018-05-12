@@ -51,9 +51,10 @@ $roles = Role::find_all();
             <h3 class="mb-4">Overview of Application Users</h3>
             <?php
             foreach($roles as $role) {
+                // Fetching users with  assigned role
                 $sql = "SELECT * FROM users as u JOIN user_role as ur ON u.id = ur.user_id WHERE ur.role_id = " . $role->id;
                 $users = User::find_by_query($sql);
-                if(!empty($users)){
+                if(!empty($users)){ // Print if we found any user
                     ?>
                     <div class="mb-5">
                     <h5 class="mb-2">Users with <?php echo $role->name; ?> role</h5>
@@ -64,14 +65,13 @@ $roles = Role::find_all();
                         <div class="col px-2">Controls</div>
                     </div>
                     <hr class="m-0">
-                <?php
-                foreach($users as $user) : ?>
+                <?php foreach($users as $user) : ?>
                     <div class="row no-gutters data-content py-2">
                         <div class="col px-2"><?php echo $user->id; ?></div>
                         <div class="col px-2"><?php echo $user->email; ?></div>
                         <div class="col px-2"><?php echo $user->username; ?></div>
                         <div class="col px-2">
-                        <select name="role_change()" id="role-change" class="d-none">
+                        <select name="role_change()" id="role-change" class="d-none"><!-- Select option for changing user role -->
                         <option value="0">Commoner</option>
                         <?php foreach($roles as $role) : ?>
                             <option value="<?php echo $role->id; ?>"><?php echo $role->name; ?></option>
@@ -87,6 +87,7 @@ $roles = Role::find_all();
             <?php }} ?>
 
             <?php
+            // Getting users without role
             $sql = "SELECT * FROM users as u LEFT JOIN user_role as ur ON u.id = ur.user_id WHERE role_id IS NULL";
             $without_role_users = User::find_by_query($sql);
             if(!empty($without_role_users)){

@@ -1,11 +1,8 @@
 
 <?php include "includes/header.php"; ?>
 <?php
-
+// Initializing Board List 
 $board_list = BoardList::find_all();
-
-
-
 ?>
 <?php
 include "includes/nav.php";
@@ -27,7 +24,7 @@ include "includes/showcase.php";
                     <div class="card-body">
                     <?php 
                     if($board_list) {
-                    $i = 0;
+                    $i = 0; // Iterator needed for creating individual id name for accordion
                     foreach($board_list as $board_item) : ?>
                         <header class="mb-4">
                             <h4>
