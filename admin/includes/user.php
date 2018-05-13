@@ -16,7 +16,14 @@ class User extends Db_object
         $this->created_at = date('Y-m-d h:i:s');
         $this->updated_at = date('Y-m-d h:i:s');
     }
-
+    public static function check_username($username)
+    {
+        global $database;
+        $sql = "SELECT username FROM " . static::$db_table . " WHERE username = '" . $username . "'";
+        if(!empty($database->query($sql)))
+            return true;
+            else return false;
+    }
     public static function verify_user($username, $password)
     {
         global $database;
@@ -25,11 +32,14 @@ class User extends Db_object
 
         $sql = "SELECT * FROM " . static::$db_table . " WHERE ";
         $sql .= "username = '{$username}' ";
-        $sql .= "AND password = '{$password}' ";
-        $sql .= "LIMIT 1";
 
         $result_query = self::find_by_query($sql);
-        return !empty($result_query) ? array_shift($result_query) : false;
+        if(!empty($result_query)) {
+            $existing_user = array_shift($result_query);
+            if(password_verify($password, $existing_user->password))
+                return $existing_user;
+                else return false;
+        }
     }
     public function setRole($role_id) 
     {
@@ -37,7 +47,6 @@ class User extends Db_object
         if($this->hasSomeRole()) {
             if(!$role_id === 0) {
                 $sql = "UPDATE user_role SET role_id = " . $role_id . " WHERE user_id = " . $this->id;
-                echo $sql;
                 $database->query($sql);
                 return (mysqli_affected_rows($database->connection) == 1) ? true : false;
             } else {
@@ -47,7 +56,6 @@ class User extends Db_object
             }
         } else {
             $sql = "INSERT INTO user_role (user_id, role_id) VALUES ('{$this->id}','{$role_id}') ";
-            echo $sql;
             return !empty($database->query($sql)) ? true : false;
         }
     }
@@ -55,7 +63,6 @@ class User extends Db_object
     {
         global $database;
         $sql = "SELECT * FROM user_role WHERE user_id = " . $this->id;
-        echo $sql;
         $role_found = $database->query($sql); 
         return ($role_found->num_rows>0) ? true : false;
     }
