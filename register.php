@@ -54,7 +54,7 @@ if(isset($_POST['register'])) {
     </div>
 </div>
 
-
+<?php include "includes/signin_modal.php"; ?>
 <?php include "includes/footer.php"; ?>
 
 
