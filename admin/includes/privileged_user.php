@@ -19,10 +19,9 @@ class PrivilegedUser extends User
         } else {
             return false;
         }
-        //return !empty($result_array) ? array_shift($result_array) : false;
     }
     protected function initRoles()
-        // Populate roles with their associated permissions
+        // Populate roles array with user associated roles 
     {
         global $database;
         $this->roles = array();

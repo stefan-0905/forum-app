@@ -62,3 +62,16 @@ if(isset($_POST['signin'])) {
         echo $the_message = "Your password or username is incorrect";
     }
 }
+
+if(isset($_POST['add_topic'])) {
+    $title = trim($_POST['title']);
+    $description = trim($_POST['description']);
+
+    $new_topic = new Topic();
+    $new_topic->title = $title;
+    $new_topic->description = $description;
+    
+    if($new_topic->save() && $new_topic->append_to_board($_POST['board_item_id']))
+        echo "Success";
+        else "Something went wrong, check your input.";
+}

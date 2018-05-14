@@ -21,7 +21,7 @@
                     </div>
                     <div class="modal-footer pb-0">
                     <button class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <buton name="signin" class="btn btn-primary signin">Sign In</button>
+                    <button name="signin" class="btn btn-primary signin">Sign In</button>
                     </div>
                 </form>
             </div>

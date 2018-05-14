@@ -72,3 +72,5 @@ class Role extends Db_object
          return isset($this->permissions[$permission]);
     }
 }
+
+?>

@@ -8,7 +8,9 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/signin.js"></script>
+<script src="js/signin_ajax.js"></script>
+<script src="js/add_topic_ajax.js"></script>
+
 
 <script>
     $(document).ready(function(){

@@ -9,7 +9,13 @@ include "includes/nav.php";
 include "includes/showcase.php";
 ?>
 
+<?php
 
+if($session->is_signed_in()) {
+    $privU = PrivilegedUser::find($session->user_id);
+}
+
+?>
 
 <!-- CONTENT -->
         <div class="row m-3">
@@ -33,6 +39,16 @@ include "includes/showcase.php";
                                    aria-expanded="false" aria-controls="<?php echo "multiCollapse" . $i; ?>">
                                     <small><i style="position:relative; bottom:3px;" class="fa fa-chevron-up align-center"></i></small> <?php echo $board_item->title; ?>
                                 </a>
+                                <?php if($session->is_signed_in() && $privU->hasPrivilege('board_topic_management')) : ?>
+                                <ul class="pull-right list-inline">
+                                    <li class="list-inline-item">
+                                        <a id="<?php echo $board_item->id; ?>" data-toggle="modal" data-target="#addTopicModal" class="text-secondary" title="Quick Add Topic"><small><i class="fa fa-plus"></i></small></a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a class="text-secondary" title="Edit Board Item"><small><i class="fa fa-gear"></i></small></a>
+                                    </li>
+                                </ul>
+                                <?php endif; ?>
                             </h4>
                         </header>
                         <div id="<?php echo "multiCollapse" . $i; ?>" class="collapse multi-collapse show">
@@ -108,4 +124,5 @@ include "includes/showcase.php";
         </div>
 
 <?php include "includes/signin_modal.php"; ?>
+<?php include "includes/add_topic_modal.php"; ?>
 <?php include "includes/footer.php"; ?>
