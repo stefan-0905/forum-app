@@ -3,7 +3,9 @@ Personal Project for Upgrading and Showcasing My Skills. I plan to continiously 
 ### Note
 Same functionality could be done differently from time to time, that's simply because i like experimenting with my code.
 ## Devlog
-Currently I'm working on updating my existing code and implementing some security measures for accounts and site 
+Currently I'm working on updating my existing code and implementing some security measures for accounts and site.
+
+Working on front-end moderators functionality.
 ## Prerequisites
 For current version you will need:
 - local server
