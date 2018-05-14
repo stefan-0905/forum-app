@@ -19,8 +19,16 @@ class User extends Db_object
     public static function check_username($username)
     {
         global $database;
-        $sql = "SELECT username FROM " . static::$db_table . " WHERE username = '" . $username . "'";
-        if(!empty($database->query($sql)))
+        $sql = "SELECT * FROM " . static::$db_table . " WHERE username = '" . $username . "'";
+        if(!empty(self::find_by_query($sql)))
+            return true;
+            else return false;
+    }
+    public static function check_email($email)
+    {
+        global $database;
+        $sql = "SELECT * FROM " . static::$db_table . " WHERE email = '" . $email . "'";
+        if(!empty(self::find_by_query($sql)))
             return true;
             else return false;
     }

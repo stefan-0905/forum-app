@@ -6,17 +6,19 @@ include "includes/showcase.php";
 
 if(isset($_POST['register'])) {
     if(!User::check_username($_POST['username'])) {
-        if($_POST['password'] == $_POST['confirm_password']) {
-            if ($new_user = new User()) {
-                $new_user->email = $_POST['email'];
-                $new_user->username = $_POST['username'];
-                $new_user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        if(!User::check_email($_POST['email'])) {
+            if($_POST['password'] == $_POST['confirm_password']) {
+                if ($new_user = new User()) {
+                    $new_user->email = $_POST['email'];
+                    $new_user->username = $_POST['username'];
+                    $new_user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-                $new_user->save();
-                $session->login($new_user);
-                redirect('index.php');
-            }
-        } else $the_message = 'Passwords didnt match.';
+                    $new_user->save();
+                    $session->login($new_user);
+                    redirect('index.php');
+                }
+            } else $the_message = 'Passwords didnt match.';
+        } else $the_message = 'Email is already taken. Use another.';
     } else $the_message = 'Username already exists. Try some other.';
 } else $the_message = $session->message;
 ?>
@@ -29,7 +31,9 @@ if(isset($_POST['register'])) {
         </div>
         <div class="col-md-5">
             <form action="register.php" method="POST">
+                <?php if(!empty($the_message)) : ?>
                 <p class="alert alert-danger"><?php echo $the_message; ?></p>
+                <?php endif; ?>
                 <div class="form-group">
                     <label for="username" class="sr-only">Username</label>
                     <input type="text" name="username" id="username" class="form-control" placeholder="Username" required/>

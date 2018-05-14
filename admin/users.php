@@ -78,7 +78,7 @@ $roles = Role::find_all();
                         <?php endforeach; ?>
                         </select>
                             <a data-id="<?php echo $user->id; ?>" class="change-role text-primary"><i class="fa fa-edit"></i></a>
-                            <a data-id="<?php echo $user->id; ?>" class="delete_user text-danger"><i class="fa fa-times"></i></a>
+                            <a data-id="<?php echo $user->id; ?>" class="delete-user text-danger"><i class="fa fa-times"></i></a>
                         </div>
                     </div>
                     <hr class="m-0">
@@ -114,7 +114,7 @@ $roles = Role::find_all();
                         <?php endforeach; ?>
                         </select>
                             <a title="Update Role" data-id="<?php echo $without_role_user->id; ?>" class="change-role text-primary"><i class="fa fa-edit"></i></a>
-                            <a href="confirmDeleteUser" title="Delete User" data-id="<?php echo $without_role_user->id; ?>" class="delete-user text-danger"><i class="fa fa-times"></i></a>
+                            <a title="Delete User" data-id="<?php echo $without_role_user->id; ?>" class="delete-user text-danger"><i class="fa fa-times"></i></a>
                         </div>
                     </div>
                     <hr class="m-0">
