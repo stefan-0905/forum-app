@@ -27,4 +27,8 @@ __board_list__: id, title, created_at, updated_at
 __topics__: id, title, description, created_at, updated_at
 
 __board_list_topics__: list_id, topic_id
+
+__topics__: id, title, description, created_at, updated_at
+
+__threads__: id, topic_id, user_id, subject, message, created_at, updated_at
 ```
