@@ -51,6 +51,7 @@ if($session->is_signed_in()) {
                                 <?php endif; ?>
                             </h4>
                         </header>
+                        <hr/>
                         <div id="<?php echo "multiCollapse" . $i; ?>" class="collapse multi-collapse show">
                         <?php $board_item->getBoardListItems(); 
                         if(!empty($board_item->list_items)) {
@@ -85,7 +86,6 @@ if($session->is_signed_in()) {
                             <hr>
                             <?php endforeach; } ?>
                         </div>
-                        <hr>
                         <?php endforeach; } ?>
                     </div>
                 </div>

@@ -10,7 +10,7 @@
             </div>
             <div class="modal-body">
                 <p class="alert alert-danger d-none"></p>
-                <form id="signinForm" method="POST">
+                <form id="signinForm" action="" method="POST">
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input id="username" name="user_username" type="text" placeholder="Username" class="form-control" required/>
@@ -20,8 +20,8 @@
                         <input id="password" name="user_password" type="password" placeholder="Password" class="form-control" required/>
                     </div>
                     <div class="modal-footer pb-0">
-                    <button class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button name="signin" class="btn btn-primary signin">Sign In</button>
+                        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" name="signin" class="btn btn-primary signin">Sign In</button>
                     </div>
                 </form>
             </div>
