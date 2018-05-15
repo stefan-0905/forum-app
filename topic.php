@@ -38,7 +38,7 @@ if($session->is_signed_in()) {
 
                 <!-- PHP CODE HERE -->
                 <?php
-                if($threads = Thread::getRelatedThreads($_GET['topic_id']) && !empty($threads)) {
+                if($threads = Thread::getRelatedThreads($_GET['topic_id'])) {
                     foreach($threads as $thread) {
                 ?>
                 <div class="row no-gutters">
