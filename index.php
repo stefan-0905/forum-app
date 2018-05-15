@@ -53,16 +53,16 @@ if($session->is_signed_in()) {
                         </header>
                         <hr/>
                         <div id="<?php echo "multiCollapse" . $i; ?>" class="collapse multi-collapse show">
-                        <?php $board_item->getBoardListItems(); 
-                        if(!empty($board_item->list_items)) {
-                        foreach($board_item->list_items as $list_item) : ?>
+                        <?php $topics = Topic::getRelatedTopics($board_item->id); 
+                        if(!empty($topics)) {
+                        foreach($topics as $topic) : ?>
                             <div class="row topic">
                                 <div class="col-lg-6 col-sm-6">
                                     <div class="media my-1 p-1">
                                         <img src="https://placehold.it/40x40" alt="" class="d-flex mr-3 align-self-center">
                                         <div class="media-body">
-                                            <h6 class="mt-0"><a href="#"><?php echo $list_item['title']; ?></a></h6>
-                                            <span class="text-muted"><?php echo $list_item['description']; ?></span>
+                                            <h6 class="mt-0"><a href="topic.php?topic_id=<?php echo $topic->id; ?>"><?php echo $topic->title; ?></a></h6>
+                                            <span class="text-muted"><?php echo $topic->description; ?></span>
                                         </div>
                                     </div>
                                 </div>

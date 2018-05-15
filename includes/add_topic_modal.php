@@ -16,7 +16,7 @@
                     </div>
                     <div class="form-group">
                         <label for="topic_description">Description:</label>
-                        <textarea placeholder="Description" name="topic_desctiption" id="topic_description" class="d-block w-100"></textarea>
+                        <textarea placeholder="Description" name="topic_desctiption" id="topic_description" class="form-control w-100"></textarea>
                     </div>
                     <div class="modal-footer pb-0">
                         <button class="btn btn-secondary" data-dismiss="modal">Close</button>

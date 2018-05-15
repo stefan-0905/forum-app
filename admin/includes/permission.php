@@ -10,8 +10,8 @@ class Permission extends Db_object
     public $updated_at;
     public function __construct()
     {
-        $this->created_at = date('Y-m-d h:i:s');
-        $this->updated_at = date('Y-m-d h:i:s');
+        $this->created_at = date('Y-m-d h:i:sa');
+        $this->updated_at = date('Y-m-d h:i:sa');
     }
     public static function find_by_name($name) {
         $sql = "SELECT * FROM " . self::$db_table . " WHERE name = '" . $name . "'";

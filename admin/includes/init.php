@@ -11,3 +11,4 @@ require_once "permission.php";
 require_once "session.php";
 require_once "board_list.class.php";
 require_once "topic.class.php";
+require_once "thread.class.php";

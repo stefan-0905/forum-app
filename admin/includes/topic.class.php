@@ -12,8 +12,8 @@ class Topic extends Db_object
 
     public function __construct()
     {
-        $this->created_at = date('Y-m-d h:i:s');
-        $this->updated_at = date('Y-m-d h:i:s');
+        $this->created_at = date('Y-m-d h:i:sa');
+        $this->updated_at = date('Y-m-d h:i:sa');
     }
     public function append_to_board($board_item_id)
     {
@@ -21,6 +21,14 @@ class Topic extends Db_object
         $sql = "INSERT INTO board_list_topics(list_id, topic_id) VALUES({$board_item_id}, {$this->id})";
         if($database->query($sql)) 
             return true;
+        else return false;
+    }
+    public static function getRelatedTopics($board_list_id)
+    {
+        $sql = "SELECT * FROM board_list_topics as blt JOIN topics as t ON blt.topic_id = t.id ";
+        $sql .= "WHERE blt.list_id = " . $board_list_id;
+        $result = self::find_by_query($sql);
+        if($result) return $result;
         else return false;
     }
 }
