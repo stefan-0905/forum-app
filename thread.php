@@ -21,7 +21,7 @@ include "includes/showcase.php"; ?>
                         <i class="fa fa-user"></i>
                         <span><?php echo User::find($thread->user_id)->username; ?></span>
                         <i class="fa fa-clock-o"></i>
-                        <span><?php echo date($thread->updated_at); ?></span>
+                        <span><?php echo dateDiff($thread->updated_at, 'now'); ?></span>
                     </p>
                     <?php if($session->is_signed_in()) : ?>
                     <a 
@@ -44,13 +44,13 @@ include "includes/showcase.php"; ?>
                 <p>Moderator</p>
                 <p>123 posts</p>
             </div>
-            <div class="col-md-9 px-3">
+            <div class="col-md-9 p-2">
                 <small>Posted 
                     <?php 
                     echo dateDiff($post->updated_at, 'now');
                     ?>
                 </small>
-                <div class="text-right pt-3 pb-1">
+                <div class="d-inline pull-right">
                 <?php if($session->is_signed_in() && $session->user_id == $post->user_id) : ?>
                 <span><a href="#"><i class="fa fa-pencil"></i></a></span>
                 <?php endif; ?>

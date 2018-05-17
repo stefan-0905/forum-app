@@ -28,7 +28,7 @@ include "includes/showcase.php"; ?>
                         <h5>Last Reply</h5>
                     </div>
                 </div>
-                <hr class="my-1"/>
+               
 
                 <!-- PHP CODE HERE -->
                 <?php
@@ -41,7 +41,7 @@ include "includes/showcase.php"; ?>
                             <img src="https://placehold.it/40x40" alt="" class="d-flex mr-3 align-self-center">
                             <div class="media-body">
                                 <h6 class="my-0"><a href="thread.php?thread_id=<?php echo $thread->id; ?>"><?php echo $thread->subject ?></a></h6>
-                                <small href="#"><a href="#"><?php echo User::find($thread->user_id)->username; ?></a> - <?php  echo date($thread->created_at); ?></small>
+                                <small href="#"><a href="#"><?php echo User::find($thread->user_id)->username; ?></a> - <?php  echo dateDiff($thread->updated_at, 'now'); ?></small>
                             </div>
                         </div>
                     </div>

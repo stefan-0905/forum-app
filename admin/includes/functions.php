@@ -35,7 +35,7 @@ function dateDiff($date1, $date2)
     } elseif ($diff->days > 2) {
         return "On ".$date_1->format('L - H:i');
     } elseif ($diff->days == 2) {
-        return "Yesterday at".$date_1->format('H:i');
+        return "Yesterday at ".$date_1->format('H:i');
     } elseif ($diff->days > 0 OR $diff->h > 1) {
         return "Today at ".$date_1->format('H:i');
     } elseif ($diff->i >= 1) {

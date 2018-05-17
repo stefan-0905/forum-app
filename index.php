@@ -43,7 +43,7 @@ include "includes/showcase.php"; ?>
                                 <?php endif; ?>
                             </h4>
                         </header>
-                        <hr/>
+                        
                         <div id="<?php echo "multiCollapse" . $i; ?>" class="collapse multi-collapse show">
                         <?php $topics = Topic::getRelatedTopics($board_item->id); 
                         if(!empty($topics)) {
