@@ -58,31 +58,33 @@ include "includes/top_nav.php"; ?>
                         <div class="col px-2">Controls</div>
                     </div>
                     <hr class="m-0">
-                <?php
-                // Fetching users with  assigned role
-                $sql = "SELECT * FROM users as u JOIN user_role as ur ON u.id = ur.user_id WHERE ur.role_id = " . $role->id;
-                $users = User::find_by_query($sql);
-                if(!empty($users)){ // Print if we found any user
-                foreach($users as $user) : ?>
-                    <div class="row no-gutters data-content py-2">
-                        <div class="col px-2"><?php echo $user->id; ?></div>
-                        <div class="col px-2"><?php echo $user->email; ?></div>
-                        <div class="col px-2"><?php echo $user->username; ?></div>
-                        <div class="col px-2">
-                        <select name="role_change()" id="role-change" class="d-none"><!-- Select option for changing user role -->
-                            <option value="0">Commoner</option>
-                        <?php foreach($roles as $role) : ?>
-                            <option value="<?php echo $role->id; ?>"><?php echo $role->name; ?></option>
-                        <?php endforeach; ?>
-                        </select>
-                            <a data-id="<?php echo $user->id; ?>" class="change-role text-primary"><i class="fa fa-edit"></i></a>
-                            <a data-id="<?php echo $user->id; ?>" class="delete-user text-danger"><i class="fa fa-times"></i></a>
+                    <?php
+                    // Fetching users with  assigned role
+                    $sql = "SELECT * FROM users as u JOIN user_role as ur ON u.id = ur.user_id WHERE ur.role_id = " . $role->id;
+                    $users = User::find_by_query($sql);
+                    if(!empty($users)){ // Print if we found any user
+                    foreach($users as $user) : ?>
+                        <div class="row no-gutters data-content py-2">
+                            <div class="col px-2"><?php echo $user->id; ?></div>
+                            <div class="col px-2"><?php echo $user->email; ?></div>
+                            <div class="col px-2"><?php echo $user->username; ?></div>
+                            <div class="col px-2">
+                                <select name="role_change()" id="role-change" class="d-none"><!-- Select option for changing user role -->
+                                    <option value="0">Commoner</option>
+                                <?php foreach($roles as $role) : ?>
+                                    <option value="<?php echo $role->id; ?>"><?php echo $role->name; ?></option>
+                                <?php endforeach; ?>
+                                </select>
+                                <a data-id="<?php echo $user->id; ?>" class="change-role text-primary"><i class="fa fa-edit"></i></a>
+                                <a data-id="<?php echo $user->id; ?>" class="delete-user text-danger"><i class="fa fa-times"></i></a>
+                            </div>
                         </div>
-                    </div>
-                    <hr class="m-0">
-                <?php endforeach; ?>
-                    </div>
-            <?php } else echo "<p class='text-secondary font-italic'>There are no users with this role.</p></div>"; } } else echo "<p>No roles were asigned.</p></div>"; ?>
+                        <hr class="m-0">
+                    <?php endforeach; ?>
+                    <?php } else echo "<p class='text-secondary font-italic'>There are no users with this role.</p>"; ?>
+                </div>
+            <?php
+            } } else echo "<p class='alert alert-info'>No roles were asigned.</p>"; ?>
             <div class="mb-5">
                 <h5 class="mb-2">Common Folks</h5>
                 <div class="row no-gutters data-heading py-2">
