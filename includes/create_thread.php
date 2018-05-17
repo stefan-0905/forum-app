@@ -8,12 +8,14 @@ if(isset($_GET['topic_id']) && !empty($_GET['topic_id']))
             $new_thread->topic_id = $_GET['topic_id'];
             $new_thread->user_id = $_POST['user_id']; 
             $new_thread->subject = $_POST['subject'];
-            
             if($new_thread->save()) {
+                
                 $new_post = new Post();
                 $new_post->thread_id = $new_thread->id;
                 $new_post->user_id =  $_POST['user_id'];
+                echo "yes";
                 $new_post->message = $_POST['content'];
+                echo "nope";
                 
                 if($new_post->save())
                     redirect('../topic.php?topic_id=' . $_GET['topic_id']);
