@@ -11,7 +11,7 @@ include "includes/showcase.php"; ?>
 
 <!-- CONTENT -->
         <div class="row m-3">
-
+        
             <main id="main-content" class="col-lg-9  pl-4 pt-4">
                 <div class="card">
                     <div class="card-header">
