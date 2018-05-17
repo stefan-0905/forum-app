@@ -31,4 +31,6 @@ For current version you will need:
 <b>topics</b>: id, title, description, created_at, updated_at
 
 <b>threads</b>: id, topic_id, user_id, subject, message, created_at, updated_at
+
+<b>threads</b>: id, thread_id, user_id, message, created_at, updated_at
 </pre>
