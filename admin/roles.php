@@ -1,5 +1,4 @@
-<?php include "includes/header.php"; ?>
-<?php
+<?php include "includes/header.php";
 $access_permission = "role_management";
 
 if($session->is_signed_in()) {
@@ -11,20 +10,13 @@ if($session->is_signed_in()) {
     }
 }else
     redirect("signin.php");
-?>
-
-<?php
-
-$roles = Role::find_all();
-$permissions = Permission::find_all();
 
 if((isset($_GET['role_id']))) {
     $edit_role = Role::find($_GET['role_id']);
     $edit_role_permissions = Role::getRolePerm($edit_role->id);
 }
-?>
 
-<?php include "includes/top_nav.php" ?>
+include "includes/top_nav.php"; ?>
 <div class="row no-gutters">
 <aside class="col-md-2 p-0">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -80,6 +72,7 @@ if((isset($_GET['role_id']))) {
                 <hr>
 
                 <?php
+                $permissions = Permission::find_all();
                 if(!empty($permissions)) {
                 $i = 0;
                 foreach ($permissions as $permission) : ?>
@@ -101,6 +94,7 @@ if((isset($_GET['role_id']))) {
                     <thead><tr><th>Name</th><th>Controls</th></tr></thead>
                     <tbody id="role_tb">
                     <?php 
+                    $roles = Role::find_all();
                     if(!empty($roles)) {
                     foreach ($roles as $role) : ?>
                         <tr>

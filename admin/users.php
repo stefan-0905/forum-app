@@ -1,5 +1,4 @@
-<?php include "includes/header.php"?>
-<?php
+<?php include "includes/header.php";
 $access_permision = "user_management";
 
 if($session->is_signed_in()) {
@@ -12,10 +11,7 @@ if($session->is_signed_in()) {
 }else
     redirect("signin.php");
 
-$roles = Role::find_all();
-
-?>
-<?php include "includes/top_nav.php" ?>
+include "includes/top_nav.php"; ?>
 <div class="row no-gutters">
     <aside class="col-md-2">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -50,13 +46,10 @@ $roles = Role::find_all();
         <div class="container pt-2 pl-3">
             <h3 class="mb-4">Overview of Application Users</h3>
             <?php
-            foreach($roles as $role) {
-                // Fetching users with  assigned role
-                $sql = "SELECT * FROM users as u JOIN user_role as ur ON u.id = ur.user_id WHERE ur.role_id = " . $role->id;
-                $users = User::find_by_query($sql);
-                if(!empty($users)){ // Print if we found any user
-                    ?>
-                    <div class="mb-5">
+            $roles = Role::find_all();
+            if(!empty($roles)) {
+            foreach($roles as $role) { ?>
+                <div class="mb-5">
                     <h5 class="mb-2">Users with <?php echo $role->name; ?> role</h5>
                     <div class="row no-gutters data-heading py-2">
                         <div class="col px-2">Id</div>
@@ -65,14 +58,19 @@ $roles = Role::find_all();
                         <div class="col px-2">Controls</div>
                     </div>
                     <hr class="m-0">
-                <?php foreach($users as $user) : ?>
+                <?php
+                // Fetching users with  assigned role
+                $sql = "SELECT * FROM users as u JOIN user_role as ur ON u.id = ur.user_id WHERE ur.role_id = " . $role->id;
+                $users = User::find_by_query($sql);
+                if(!empty($users)){ // Print if we found any user
+                foreach($users as $user) : ?>
                     <div class="row no-gutters data-content py-2">
                         <div class="col px-2"><?php echo $user->id; ?></div>
                         <div class="col px-2"><?php echo $user->email; ?></div>
                         <div class="col px-2"><?php echo $user->username; ?></div>
                         <div class="col px-2">
                         <select name="role_change()" id="role-change" class="d-none"><!-- Select option for changing user role -->
-                        <option value="0">Commoner</option>
+                            <option value="0">Commoner</option>
                         <?php foreach($roles as $role) : ?>
                             <option value="<?php echo $role->id; ?>"><?php echo $role->name; ?></option>
                         <?php endforeach; ?>
@@ -84,14 +82,7 @@ $roles = Role::find_all();
                     <hr class="m-0">
                 <?php endforeach; ?>
                     </div>
-            <?php }} ?>
-
-            <?php
-            // Getting users without role
-            $sql = "SELECT * FROM users as u LEFT JOIN user_role as ur ON u.id = ur.user_id WHERE role_id IS NULL";
-            $without_role_users = User::find_by_query($sql);
-            if(!empty($without_role_users)){
-            ?>
+            <?php } else echo "<p class='text-secondary font-italic'>There are no users with this role.</p></div>"; } } else echo "<p>No roles were asigned.</p></div>"; ?>
             <div class="mb-5">
                 <h5 class="mb-2">Common Folks</h5>
                 <div class="row no-gutters data-heading py-2">
@@ -101,7 +92,11 @@ $roles = Role::find_all();
                     <div class="col px-2">Controls</div>
                 </div>
                 <hr class="m-0">
-                <?php
+            <?php
+            // Getting users without role
+            $sql = "SELECT * FROM users as u LEFT JOIN user_role as ur ON u.id = ur.user_id WHERE role_id IS NULL";
+            $without_role_users = User::find_by_query($sql);
+            if(!empty($without_role_users)){
                 foreach($without_role_users as $without_role_user) : ?>
                     <div class="row no-gutters data-content py-2">
                         <div class="col px-2"><?php echo $without_role_user->id; ?></div>
@@ -120,7 +115,7 @@ $roles = Role::find_all();
                     <hr class="m-0">
                 <?php endforeach; ?>
             </div>
-            <?php } else { echo "No users";} ?>
+            <?php } else { echo "<p class='text-secondary font-italic'>There are no users without role.</p></div>";} ?>
         </div>
     </main>
 </div>

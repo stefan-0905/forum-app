@@ -1,5 +1,4 @@
-<?php include "includes/header.php"?>
-<?php
+<?php include "includes/header.php";
 $access_permision = "board_topic_management";
 
 if($session->is_signed_in()) {
@@ -11,8 +10,8 @@ if($session->is_signed_in()) {
     }
 }else
     redirect("signin.php");
-?>
-<?php include "includes/top_nav.php" ?>
+
+include "includes/top_nav.php"; ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark col-md-2">
     <ul class="navbar-nav flex-column">
         <li class="nav-item">

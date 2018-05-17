@@ -7,16 +7,17 @@ if($session->is_signed_in())
 if(isset($_POST['submit'])) {
     $username = trim($_POST['user_username']);
     $password = trim($_POST['user_password']);
+    if(!empty($username) && !empty($password)) {
+        //Method to check database user
+        $user_found = User::verify_user($username, $password);
 
-    //Method to check database user
-    $user_found = User::verify_user($username, $password);
-
-    if($user_found) {
-        $session->login($user_found);
-        redirect("index.php");
-    } else {
-        $the_message = "Your password or username is incorrect";
-    }
+        if($user_found) {
+            $session->login($user_found);
+            redirect("index.php");
+        } else {
+            $the_message = "Your password or username is incorrect";
+        }
+    } else $the_message = "Please fill up form before submiting.";
 } else {
     $the_message = $session->message;
     $username = "";
@@ -39,10 +40,10 @@ if(isset($_POST['submit'])) {
     <link rel="stylesheet" href="../css/admin_style.css"/>
 </head>
 <body id="signin" class="text-center">
-    <form class="form-signin" action="signin.php" method="POST">
+    <form class="form-signin" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
         <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"/>
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <h4 class="bg-danger"><?php echo $the_message; ?></h4>
+        <h4 class="alert alert-danger"><?php if(isset($the_message)) echo $the_message; ?></h4>
         <label for="inputUsername" class="sr-only">Email Username</label>
         <input type="text" id="inputUsername" name="user_username" class="form-control" placeholder="Username" required autofocus/>
         <label for="inputPassword" class="sr-only">Password</label>

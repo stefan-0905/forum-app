@@ -9,9 +9,9 @@ if(isset($_POST['register'])) {
         if(!User::check_email($_POST['email'])) {
             if($_POST['password'] == $_POST['confirm_password']) {
                 if ($new_user = new User()) {
-                    $new_user->email = $_POST['email'];
-                    $new_user->username = $_POST['username'];
-                    $new_user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                    $new_user->email = trim($_POST['email']);
+                    $new_user->username = trim($_POST['username']);
+                    $new_user->password = password_hash(trim($_POST['password']), PASSWORD_DEFAULT);
 
                     $new_user->save();
                     $session->login($new_user);
@@ -30,7 +30,7 @@ if(isset($_POST['register'])) {
             <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet, assumenda aut autem eaque eius molestiae quaerat rem sint tenetur? Accusantium asperiores, beatae distinctio eius eligendi eveniet incidunt laboriosam odit quos ratione reprehenderit repudiandae sed sint suscipit tempora totam, voluptate?</p>
         </div>
         <div class="col-md-5">
-            <form action="register.php" method="POST">
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                 <?php if(!empty($the_message)) : ?>
                 <p class="alert alert-danger"><?php echo $the_message; ?></p>
                 <?php endif; ?>

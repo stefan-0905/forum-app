@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $(document).on('click', '.signin', function() {
-        let username = $('#username').val();
-        let password = $('#password').val();
+        let username = $('#user_username').val();
+        let password = $('#user_password').val();
         if(username != "" && password != "")
             $.ajax({
                 url: "admin/includes/ajax_code.php",

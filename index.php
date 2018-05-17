@@ -1,21 +1,13 @@
-
-<?php include "includes/header.php"; ?>
-<?php
+<?php include "includes/header.php";
 // Initializing Board List 
 $board_list = BoardList::find_all();
-?>
-<?php
-include "includes/nav.php";
-include "includes/showcase.php";
-?>
-
-<?php
 
 if($session->is_signed_in()) {
     $privU = PrivilegedUser::find($session->user_id);
 }
 
-?>
+include "includes/nav.php";
+include "includes/showcase.php"; ?>
 
 <!-- CONTENT -->
         <div class="row m-3">

@@ -1,21 +1,4 @@
 $(document).ready(function () {
-    // $(document).on('click', '.add-topic', function() {
-    //     console.log($(this).data(board-item));
-    //     let title = $('#title').val();
-    //     let description = $('#topic_description').val();
-        // if(title != "" && description != "")
-        //     $.ajax({
-        //         url: "admin/includes/ajax_code.php",
-        //         data: {add_topic: true, title: title, description: description},
-        //         type: "POST",
-        //         success: function (data) {
-        //             if(!data.error && data == "Success")
-        //                 location.reload(true);
-        //                 else $('#addTopicForm').prev().removeClass('d-none').text(data);
-        //         }
-        //     })
-        // else $('#addTopicForm').prev().removeClass('d-none').text('Please enter something in the fields');
-    // })
     $('#addTopicModal').on('show.bs.modal', function(e) {
 
         var $modal = $(this),

@@ -1,17 +1,11 @@
-
-<?php include "includes/header.php"; ?>
-<?php
-include "includes/nav.php";
-include "includes/showcase.php";
-?>
-
-<?php
+<?php include "includes/header.php";
 
 if($session->is_signed_in()) {
     $privU = PrivilegedUser::find($session->user_id);
 }
 
-?>
+include "includes/nav.php";
+include "includes/showcase.php"; ?>
 
 <!-- CONTENT -->
 <div class="row m-3">
