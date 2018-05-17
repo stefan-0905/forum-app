@@ -11,24 +11,24 @@ For current version you will need:
 - local server
 - database setup
 ### Database structure
-```
-__users__: id, email, username, password, created_at, updated_at
+<pre>
+<b>users</b>: id, email, username, password, created_at, updated_at
 
-__roles__: id, name, created_at, updated_at
+<b>roles</b>: id, name, created_at, updated_at
 
-__permissions__: id, name, created_at, updated_at
+<b>permissions</b>: id, name, created_at, updated_at
 
-__role_perm__: role_id, perm_id
+<b>role_perm</b>: role_id, perm_id
 
-__user_role__: user_id, role_id
+<b>user_role</b>: user_id, role_id
 
-__board_list__: id, title, created_at, updated_at
+<b>board_list</b>: id, title, created_at, updated_at
 
-__topics__: id, title, description, created_at, updated_at
+<b>topics</b>: id, title, description, created_at, updated_at
 
-__board_list_topics__: list_id, topic_id
+<b>board_list_topics</b>: list_id, topic_id
 
-__topics__: id, title, description, created_at, updated_at
+<b>topics</b>: id, title, description, created_at, updated_at
 
-__threads__: id, topic_id, user_id, subject, message, created_at, updated_at
-```
+<b>threads</b>: id, topic_id, user_id, subject, message, created_at, updated_at
+</pre>
