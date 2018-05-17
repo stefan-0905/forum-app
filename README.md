@@ -32,5 +32,5 @@ For current version you will need:
 
 <b>threads</b>: id, topic_id, user_id, subject, message, created_at, updated_at
 
-<b>threads</b>: id, thread_id, user_id, message, created_at, updated_at
+<b>posts</b>: id, thread_id, user_id, message, created_at, updated_at
 </pre>
