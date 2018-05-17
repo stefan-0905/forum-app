@@ -50,7 +50,7 @@ include "includes/showcase.php"; ?>
                 <?php } } else echo "<p class='text-secondary font-italic'>There are no threads yet written for this topic</p>"; ?>
             </div>
         <?php } else { ?>
-            <h3>No topic with that id.</h3> 
+            <h3 class="alert alert-danger">No topic with that id.</h3> 
         <?php } ?>
     </main>
 
