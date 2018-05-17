@@ -14,8 +14,8 @@ class Post extends Db_object
 
     public function __construct()
     {
-        $this->created_at = date('Y-m-d h:i:sa');
-        $this->updated_at = date('Y-m-d h:i:sa');
+        $this->created_at = date('Y-m-d H:i:sa');
+        $this->updated_at = date('Y-m-d H:i:sa');
     }
 
     public static function getRelatedPosts($thread_id)
