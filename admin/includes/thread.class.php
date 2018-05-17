@@ -3,12 +3,11 @@
 class Thread extends Db_object 
 {
     protected static $db_table = 'threads';
-    protected static $db_table_fields = array('id', 'topic_id', 'user_id', 'subject', 'message', 'created_at', 'updated_at');
+    protected static $db_table_fields = array('id', 'topic_id', 'user_id', 'subject', 'created_at', 'updated_at');
     public $id;
     public $topic_id;
     public $user_id;
     public $subject;
-    public $message;
     public $created_at;
     public $updated_at;
 
