@@ -21,9 +21,14 @@ include "includes/showcase.php"; ?>
                         <i class="fa fa-user"></i>
                         <span><?php echo User::find($thread->user_id)->username; ?></span>
                         <i class="fa fa-clock-o"></i>
-                        <span><?php echo $thread->created_at; ?></span>
+                        <span><?php echo date($thread->updated_at); ?></span>
                     </p>
-                    <a href="#reply" class="d-inline-block btn btn-outline-success pull-right">Reply</a>
+                    <?php if($session->is_signed_in()) : ?>
+                    <a 
+                        href="#reply-it" 
+                        id="quick-reply" 
+                        class="d-inline-block btn btn-outline-success pull-right">Reply</a>
+                    <?php endif; ?>
                 </div>
             </div>
         </header>
@@ -32,15 +37,20 @@ include "includes/showcase.php"; ?>
         if($posts = Post::getRelatedPosts($thread->id)) {
         foreach($posts as $post) {
         ?>
-        <div class="row no-gutters">
-            <div class="col-md-3 text-center border-right">
-                <img src="https://placehold.it/80x80" alt="" class="d-flex mx-auto">
+        <div class="post row no-gutters mb-3">
+            <div class="user-profile-section col-md-3 py-3 text-center">
+                <img src="https://placehold.it/80x80" alt="" class="mx-auto mb-3">
                 <p><?php echo User::find($post->user_id)->username; ?></p>
                 <p>Moderator</p>
                 <p>123 posts</p>
             </div>
             <div class="col-md-9 px-3">
-                <div class="text-right pb-1">
+                <small>Posted 
+                    <?php 
+                    echo dateDiff($post->updated_at, 'now');
+                    ?>
+                </small>
+                <div class="text-right pt-3 pb-1">
                 <?php if($session->is_signed_in() && $session->user_id == $post->user_id) : ?>
                 <span><a href="#"><i class="fa fa-pencil"></i></a></span>
                 <?php endif; ?>
@@ -49,7 +59,7 @@ include "includes/showcase.php"; ?>
                 <p><?php echo $post->message; ?></p>
             </div>
         </div>
-        <hr/>
+        
         <?php } 
         } else echo "<p class='alert alert-danger'>Something went wrong. Looks like there is no OP for this thread.</p>";
         ?>
@@ -57,7 +67,7 @@ include "includes/showcase.php"; ?>
         
         if($session->is_signed_in()) :
         ?>
-        <div class="row no-gutters">
+        <div id="reply-it" class="row no-gutters d-none">
             <div class="col-md-3 text-center border-right">
                 <img src="https://placehold.it/80x80" alt="" class="d-flex mx-auto">
                 <p><?php echo User::find($session->user_id)->username; ?></p>
