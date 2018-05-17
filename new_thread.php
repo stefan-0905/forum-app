@@ -22,7 +22,7 @@ include "includes/showcase.php"; ?>
             </div>
             <div class="form-group">
                 <label for="message">Message:</label>
-                <textarea rows="5" placeholder="Message" id="edit" name="content" class="form-control w-100"></textarea>
+                <textarea rows="5" placeholder="Message" id="message" name="content" class="form-control w-100"></textarea>
             </div>
             <input type="hidden" name="user_id" value="<?php echo $session->user_id; ?>">
             <input type="submit" name="create_thread" class="btn btn-primary" value="Create Thread"/>
@@ -31,8 +31,16 @@ include "includes/showcase.php"; ?>
     </main>
 </div>
 
-<?php include "includes/signin_modal.php"; ?>
-<?php include "includes/add_topic_modal.php"; ?>
+<?php
+include "includes/signin_modal.php"; 
+include "includes/add_topic_modal.php"; 
 
-
-<?php include "includes/footer.php"; ?>
+$script_array = array (
+    'js/signin_ajax.js', 
+    'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1//js/froala_editor.pkgd.min.js',
+    'js/main.js',
+    'js/froala.js'
+);
+footer($script_array); ?>

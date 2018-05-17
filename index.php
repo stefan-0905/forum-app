@@ -115,6 +115,13 @@ include "includes/showcase.php"; ?>
             </aside>
         </div>
 
-<?php include "includes/signin_modal.php"; ?>
-<?php include "includes/add_topic_modal.php"; ?>
-<?php include "includes/footer.php"; ?>
+<?php
+include "includes/signin_modal.php"; 
+include "includes/add_topic_modal.php"; 
+
+$script_array = array (
+    'js/signin_ajax.js',
+    'js/add_topic_ajax.js',
+    'js/main.js'
+);
+footer($script_array); ?>

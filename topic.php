@@ -40,7 +40,7 @@ include "includes/showcase.php"; ?>
                         <div class="media my-1 p-1">
                             <img src="https://placehold.it/40x40" alt="" class="d-flex mr-3 align-self-center">
                             <div class="media-body">
-                                <h6 class="my-0"><a href="#"><?php echo $thread->subject ?></a></h6>
+                                <h6 class="my-0"><a href="thread.php?thread_id=<?php echo $thread->id; ?>"><?php echo $thread->subject ?></a></h6>
                                 <small href="#"><a href="#"><?php echo User::find($thread->user_id)->username; ?></a> - <?php  echo date($thread->created_at); ?></small>
                             </div>
                         </div>
@@ -86,6 +86,12 @@ include "includes/showcase.php"; ?>
     </aside>
 </div>
 
-<?php include "includes/signin_modal.php"; ?>
-<?php include "includes/add_topic_modal.php"; ?>
-<?php include "includes/footer.php"; ?>
+<?php 
+include "includes/signin_modal.php";
+include "includes/add_topic_modal.php"; 
+
+$script_array = array(
+    'js/signin_ajax.js',
+    'js/main.js'
+);
+footer($script_array); ?>

@@ -58,7 +58,13 @@ if(isset($_POST['register'])) {
     </div>
 </div>
 
-<?php include "includes/signin_modal.php"; ?>
-<?php include "includes/footer.php"; ?>
+<?php 
+include "includes/signin_modal.php";
+
+$script_array = array (
+    'js/signin_ajax.js',
+    'js/main.js'
+);
+footer($script_array); ?>
 
 
