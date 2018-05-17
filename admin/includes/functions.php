@@ -21,3 +21,26 @@ function footer($script_array)
 
     echo "</body></html>";
 }
+
+function dateDiff($date1, $date2)
+{
+    $date_1 = new DateTime($date1);
+    $date_2 = new DateTime($date2);
+    $diff = $date_1->diff($date_2);
+
+    if ($diff->days > 365) {
+        return "On ".$date_1->format('Y-m-d');
+    } elseif ($diff->days > 7) {
+        return "On ".$date_1->format('M d');
+    } elseif ($diff->days > 2) {
+        return "On ".$date_1->format('L - H:i');
+    } elseif ($diff->days == 2) {
+        return "Yesterday at".$date_1->format('H:i');
+    } elseif ($diff->days > 0 OR $diff->h > 1) {
+        return "Today at ".$date_1->format('H:i');
+    } elseif ($diff->i >= 1) {
+        return $diff->i." min ago";
+    } else {
+        return "Just now";
+    }
+}
