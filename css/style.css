@@ -1,5 +1,5 @@
 body {
-  background-color: #ddd; }
+  background-color: #bbb; }
 
 .navbar {
   opacity: 0.9; }
@@ -21,5 +21,12 @@ body {
 
 .topic:hover {
   background: #eee; }
-
-/*# sourceMappingURL=style.css.map */
+hr {
+  border: 1px solid #bbb;
+}
+.post {
+  border: 2px solid #bbb;
+}
+.user-profile-section {
+  border-right: 1px solid #bbb;
+}
