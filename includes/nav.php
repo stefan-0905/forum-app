@@ -33,8 +33,8 @@
                         <i class="fa fa-user"></i> Welcome, Stefan
                     </a>
                     <div class="dropdown-menu">
-                        <a href="profile.html" class="dropdown-item">
-                            <i class="fa fa-user-circle"></i> Profile
+                        <a href="edit_profile.php" class="dropdown-item">
+                            <i class="fa fa-user-circle"></i> Edit Profile
                         </a>
                         <a href="settings.html" class="dropdown-item">
                             <i class="fa fa-gear"></i> Settings
