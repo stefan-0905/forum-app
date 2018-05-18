@@ -42,3 +42,6 @@ hr {
 .user-profile-section {
   border-right: 1px solid #bbb;
 }
+#edit-profile-form {
+  background-color: #4C6085;
+}

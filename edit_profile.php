@@ -10,34 +10,39 @@ include "includes/nav.php";
 include "includes/showcase.php"; ?>
 
 <!-- CONTENT -->
-<div class="row m-3 px-3">   
-    <main id="main-content" class="col-lg-10 mx-auto bg-light pt-3">
-        <div class="card border-0">
-            <div class="card-header border-bottom-0">
-                    <div class="row no-gutters">
-                        <div class="col-md-3">
-                            <img src="img/profile_images/user_default_blue.png" class="d-inline-block" alt="User Avatar">
-                        </div>
-                        <div class="col-md-9">
-                            <h3><?php echo strtoupper($privU->username); ?></h3>
-                            <p class="text-secondary">Member since 
-                            <?php $date = new DateTime($privU->created_at);
-                            echo $date->format('F jS Y'); ?></p>
-                        </div>
+<div class="row no-gutters m-3 px-3">   
+    <main id="main-content" class="col-lg-10 mx-auto bg-light">
+        <div id="edit-profile-form" class="card border-0">
+            <div class="card-header border-bottom-0 text-light bg-dark">
+                <div class="row no-gutters">
+                    <div class="col-md-2 text-center">
+                        <img src="img/profile_images/user_default_blue.png" 
+                             style="width:100px;height:100px;" 
+                             class="d-inline-block" 
+                             alt="User Avatar"/>
                     </div>
-                    <hr>
-                    <form action="" method="POST">
-                        <div class="form-group">
-                            <label for="username">Display Name:</label>
-                            <input type="text" class="form-control" name="username" id="username" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="file" class="form-control-file" name="image"/>
-                        </div>
-                        <input type="submit" class="btn btn-primary" name="save_changes" value="Save"/>
-                    </form>
+                    <div class="col-md-10">
+                        <h3><?php echo strtoupper($privU->username); ?></h3>
+                        <p>Member since 
+                        <?php $date = new DateTime($privU->created_at);
+                        echo $date->format('F jS Y'); ?></p>
+                    </div>
+                </div>
             </div>
-        <div class="card-body">
+            <div class="card-body">
+                <form class="p-3 text-light" action="includes/updated_profile.php?user_id=<?php echo $session->user_id; ?>" method="POST">
+                    <div class="form-group">
+                        <label for="username">Display Name:</label>
+                        <input type="text" class="form-control w-25" name="username" id="username" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="avatar">Avatar:</label>
+                        <input type="file" class="form-control-file" name="avatar"/>
+                    </div>
+                    <input type="submit" class="btn btn-success" name="save_changes" value="Save"/>
+                </form>
+            </div>
+        </div>
     </main>
 </div>
 
@@ -47,7 +52,6 @@ include "includes/add_topic_modal.php";
 
 $script_array = array (
     'js/signin_ajax.js',
-    'js/add_topic_ajax.js',
     'js/main.js'
 );
 footer($script_array); ?>
