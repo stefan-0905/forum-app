@@ -71,30 +71,21 @@ include "includes/showcase.php"; ?>
     <aside id="recent-posts" class="col-lg-3 mt-4 p-0">
         <div class="card border-0">
             <div class="card-header">
-                <h3>Recent Posts</h3>
+                <h3>Recent Threads</h3>
             </div>
             <div class="card-body">
+                <?php
+                if($topFiveThreads = Thread::topFive()) {
+                foreach($topFiveThreads as $topThread) {
+                ?>
                 <div class="media mb-3">
-                    <img src="https://placehold.it/40x40" alt="" class="d-flex mr-3 align-self-center">
+                    <img src="img/thread_default.png" style="width:40px;height:40px;" alt="" class="d-flex mr-3 align-self-center">
                     <div class="media-body">
-                        <h6 class="mt-0"><a href="#">Lorem ipsum dolor sit amet.</a></h6>
-                        <a href="#">Stex</a> - <span class="text-muted">15 minutes ago</span>
+                        <h6 class="my-0"><a href="thread.php?thread_id=<?php echo $topThread->id; ?>"><?php echo $topThread->subject; ?></a></h6>
+                        <a href="#"><?php echo User::find($topThread->user_id)->username; ?></a> - <span class="text-muted"><?php echo dateDiff($topThread->created_at, 'now'); ?></span>
                     </div>
                 </div>
-                <div class="media mb-2">
-                    <img src="https://placehold.it/40x40" alt="" class="d-flex mr-3 align-self-center">
-                    <div class="media-body">
-                        <h6 class="mt-0"><a href="#">Lorem ipsum dolor sit amet.</a></h6>
-                        <a href="#">Stex</a> - <span class="text-muted">15 minutes ago</span>
-                    </div>
-                </div>
-                <div class="media">
-                    <img src="https://placehold.it/40x40" alt="" class="d-flex mr-3 align-self-center">
-                    <div class="media-body">
-                        <h6 class="mt-0"><a href="#">Lorem ipsum dolor sit amet.</a></h6>
-                        <a href="#">Stex</a> - <span class="text-muted">15 minutes ago</span>
-                    </div>
-                </div>
+                <?php } } else echo "<p class='font-italic text-secondary'>No recent Threads</p>"; ?>
             </div>
         </div>
     </aside>

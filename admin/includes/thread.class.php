@@ -23,6 +23,13 @@ class Thread extends Db_object
             return $result_array;
             else return false;
     }
+    public static function topFive() 
+    {
+        $sql = "SELECT * FROM " . self::$db_table . " ORDER BY created_at DESC LIMIT 5";
+        if($result_array = self::find_by_query($sql))
+            return $result_array;
+            else return false;
+    }
     public static function getLastThread(int $topic_id)
     {
         $sql = "SELECT * FROM " . self::$db_table . " WHERE topic_id = {$topic_id} ORDER BY created_at DESC LIMIT 1";
