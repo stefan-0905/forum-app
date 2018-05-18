@@ -60,20 +60,24 @@ include "includes/showcase.php"; ?>
                                 </div>
                                 <div class="col-lg-2 text-right d-none d-lg-block">
                                     <div class="my-1 p-1">
-                                        <p class="text-muted m-0">5 threads</p>
-                                        <p class="text-muted m-0">50 posts</p>
+                                        <p class="text-muted m-0"><?php echo Thread::count_by_topic_id($topic->id); ?> threads</p>
+                                        <p class="text-muted m-0"><?php echo Post::count_by_topic_id($topic->id); ?> posts</p>
                                     </div>
                                 </div>
+                                <?php $latest_thread = Thread::getLastThread($topic->id);
+                                if(!empty($latest_thread)) {
+                                ?>
                                 <div class="col-lg-4 col-sm-6">
                                     <div class="media my-1 p-1 text-md-left text-sm-right">
-                                        <img src="https://placehold.it/40x40" alt="User Avatar"
+                                        <img src="img/thread_default.png" style="width:40px;height:40px;" alt="User Avatar"
                                              class="d-flex mr-3 align-self-center rounded">
                                         <div class="media-body">
-                                            <h6 class="mt-0"><a href="#">Newest Post</a></h6>
-                                            <a href="#">Stex</a> - <span class="text-muted">15 minutes ago</span>
+                                            <h6 class="mt-0"><a href="#"><?php echo $latest_thread->subject; ?></a></h6>
+                                            <a href="#"><?php echo User::find($latest_thread->user_id)->username; ?></a> - <span class="text-muted"><?php echo dateDiff($latest_thread->created_at, 'now'); ?></span>
                                         </div>
                                     </div>
                                 </div>
+                                <?php } ?>
                             </div>
                             <hr>
                             <?php endforeach; } ?>

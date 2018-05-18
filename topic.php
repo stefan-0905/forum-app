@@ -45,6 +45,20 @@ include "includes/showcase.php"; ?>
                             </div>
                         </div>
                     </div>
+                    <?php $latest_post = Post::getLastPost($thread->id);
+                        if(!empty($latest_post)) {
+                        ?>
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="media my-1 p-1 text-md-left text-sm-right">
+                                <img src="img/thread_default.png" style="width:40px;height:40px;" alt="User Avatar"
+                                        class="d-flex mr-3 align-self-center rounded">
+                                <div class="media-body">
+                                    <a href="#" class="d-block"><?php echo User::find($latest_post->user_id)->username; ?></a>
+                                    <span class="text-muted"><?php echo dateDiff($latest_post->created_at, 'now'); ?></span>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
                 </div>
                 <hr class="my-1">
                 <?php } } else echo "<p class='text-secondary font-italic'>There are no threads yet written for this topic</p>"; ?>

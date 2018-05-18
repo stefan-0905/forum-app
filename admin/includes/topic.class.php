@@ -31,6 +31,7 @@ class Topic extends Db_object
         if($result) return $result;
         else return false;
     }
+    
 }
 
 
