@@ -10,11 +10,11 @@ include "includes/nav.php";
 include "includes/showcase.php"; ?>
 
 <!-- CONTENT -->
-        <div class="row m-3">
+        <div class="row m-3 px-3">
         
-            <main id="main-content" class="col-lg-9  pl-4 pt-4">
-                <div class="card">
-                    <div class="card-header">
+            <main id="main-content" class="col-lg-9 mt-4 px-0">
+                <div class="card border-0">
+                    <div class="card-header pt-3 px-3">
                         <h3>Online Gamers Comunity</h3>
                         <hr>
                         <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium alias, aliquam commodi cum dolorem dolores ea error fugiat molestias nemo neque recusandae rem similique sit soluta vero vitae voluptas.</p>
@@ -83,8 +83,8 @@ include "includes/showcase.php"; ?>
                 </div>
             </main>
 
-            <aside class="col-lg-3 p-4">
-                <div class="card">
+            <aside id="recent-posts" class="col-lg-3 mt-4 p-0">
+                <div class="card border-0">
                     <div class="card-header">
                         <h3>Recent Posts</h3>
                     </div>

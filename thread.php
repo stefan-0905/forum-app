@@ -9,7 +9,6 @@ include "includes/showcase.php"; ?>
 
 <!-- CONTENT -->
 <div class="m-3">
-    
     <main id="main-content" class="col-lg-9 bg-light mx-auto p-5">
         <?php if(isset($_GET['thread_id']) && $thread = Thread::find($_GET['thread_id'])) : ?>
         <header class="mb-5">

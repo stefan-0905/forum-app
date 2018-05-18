@@ -18,7 +18,19 @@ body {
 .carousel-image-3 {
   background: url("../img/wow-1.jpg");
   background-size: cover; }
-
+@media only screen and (min-width: 992px) {
+  aside#recent-posts {
+    padding-left: 16px!important;
+  }
+}
+@media only screen and (max-width: 1227px) {
+  aside#recent-posts {
+    font-size: 12px;
+  }
+  aside#recent-posts h6 {
+    font-size:14px;
+  }
+}
 .topic:hover {
   background: #eee; }
 hr {
