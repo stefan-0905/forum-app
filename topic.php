@@ -38,7 +38,7 @@ include "includes/showcase.php"; ?>
                 <div class="row no-gutters">
                     <div class="col-md-8 pr-5">
                         <div class="media my-1 p-1">
-                            <img src="https://placehold.it/40x40" alt="" class="d-flex mr-3 align-self-center">
+                            <img src="img/thread_default.png" style="width:50px;height:50px;" class="d-flex mr-3 align-self-center">
                             <div class="media-body">
                                 <h6 class="my-0"><a href="thread.php?thread_id=<?php echo $thread->id; ?>"><?php echo $thread->subject ?></a></h6>
                                 <small href="#"><a href="#"><?php echo User::find($thread->user_id)->username; ?></a> - <?php  echo dateDiff($thread->updated_at, 'now'); ?></small>

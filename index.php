@@ -51,7 +51,7 @@ include "includes/showcase.php"; ?>
                             <div class="row topic">
                                 <div class="col-lg-6 col-sm-6">
                                     <div class="media my-1 p-1">
-                                        <img src="https://placehold.it/40x40" alt="" class="d-flex mr-3 align-self-center">
+                                        <img src="img/topic_default.png" style="width:50px;height:50px;" alt="Board Topic" class="d-flex mr-3 align-self-center">
                                         <div class="media-body">
                                             <h6 class="mt-0"><a href="topic.php?topic_id=<?php echo $topic->id; ?>"><?php echo $topic->title; ?></a></h6>
                                             <span class="text-muted"><?php echo $topic->description; ?></span>
