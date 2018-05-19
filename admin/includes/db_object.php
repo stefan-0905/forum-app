@@ -1,6 +1,8 @@
 <?php
 
 class Db_object {
+    public $errors = array();
+
     public static function find_all()
     {
         return static::find_by_query("SELECT * FROM " . static::$db_table);
