@@ -16,7 +16,7 @@ include "includes/showcase.php"; ?>
             <div class="card-header border-bottom-0 text-light bg-dark">
                 <div class="row no-gutters">
                     <div class="col-md-2 text-center">
-                        <img src="img/profile_images/user_default_blue.png" 
+                        <img src="img/profile_images/<?php echo $privU->profile_avatar; ?>" 
                              style="width:100px;height:100px;" 
                              class="d-inline-block" 
                              alt="User Avatar"/>
@@ -30,7 +30,20 @@ include "includes/showcase.php"; ?>
                 </div>
             </div>
             <div class="card-body">
-                <form class="p-3 text-light" action="includes/updated_profile.php?user_id=<?php echo $session->user_id; ?>" method="POST">
+                <form class="p-3 text-light" 
+                      action="includes/update_profile.php?user_id=<?php echo $session->user_id; ?>" 
+                      method="POST" 
+                      enctype="multipart/form-data">
+                    <?php 
+                    if(!empty($_GET['errors'])) 
+                    {
+                        $errors = unserialize($_GET['errors']);
+                        echo "<p class='alert alert-danger'>";
+                        foreach($errors as $error)
+                            echo $error . "<br/>";
+                        echo "</p>";
+                    }
+                    ?>
                     <div class="form-group">
                         <label for="username">Display Name:</label>
                         <input type="text" class="form-control w-25" name="username" id="username" required/>

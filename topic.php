@@ -50,7 +50,7 @@ include "includes/showcase.php"; ?>
                         ?>
                         <div class="col-lg-4 col-sm-6">
                             <div class="media my-1 p-1 text-md-left text-sm-right">
-                                <img src="img/profile_images/if_man.png" style="width:40px;height:40px;" alt="User Avatar"
+                                <img src="img/profile_images/<?php echo User::find($latest_post->user_id)->profile_avatar; ?>" style="width:40px;height:40px;" alt="User Avatar"
                                         class="d-flex mr-3 align-self-center rounded">
                                 <div class="media-body">
                                     <a href="#" class="d-block"><?php echo User::find($latest_post->user_id)->username; ?></a>
@@ -79,7 +79,7 @@ include "includes/showcase.php"; ?>
                 foreach($topFiveThreads as $topThread) {
                 ?>
                 <div class="media mb-3">
-                    <img src="img/profile_images/user_default_blue.png" style="width:40px;height:40px;" alt="" class="d-flex mr-3 align-self-center">
+                    <img src="img/profile_images/<?php echo User::find($topThread->user_id)->profile_avatar; ?>" style="width:40px;height:40px;" alt="" class="d-flex mr-3 align-self-center">
                     <div class="media-body">
                         <h6 class="my-0"><a href="thread.php?thread_id=<?php echo $topThread->id; ?>"><?php echo $topThread->subject; ?></a></h6>
                         <a href="#"><?php echo User::find($topThread->user_id)->username; ?></a> - <span class="text-muted"><?php echo dateDiff($topThread->created_at, 'now'); ?></span>

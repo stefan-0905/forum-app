@@ -3,11 +3,12 @@
 class User extends Db_object
 {
     protected static $db_table = 'users';
-    protected static $db_table_fields = array('email', 'username', 'password', 'created_at', 'updated_at');
+    protected static $db_table_fields = array('email', 'username', 'password', 'profile_avatar', 'created_at', 'updated_at');
     public $id;
     public $email;
     public $username;
     public $password;
+    public $profile_avatar;
     public $created_at;
     public $updated_at;
 
@@ -15,6 +16,7 @@ class User extends Db_object
     {
         $this->created_at = date('Y-m-d H:i:sa');
         $this->updated_at = date('Y-m-d H:i:sa');
+        $this->profile_avatar = "user_default_blue.png";
     }
     public static function check_username($username)
     {
@@ -73,5 +75,25 @@ class User extends Db_object
         $sql = "SELECT * FROM user_role WHERE user_id = " . $this->id;
         $role_found = $database->query($sql); 
         return ($role_found->num_rows>0) ? true : false;
+    }
+    public function saveAvatar($file)
+    {
+        $target_dir = SITE_ROOT . DS ."img".DS."profile_images" . DS;
+        $target_file = $target_dir . basename($file['name']);
+        $image_file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+        $check = getimagesize($file['tmp_name']);
+        if($check !== false)
+        {
+            if($file['size'] <= 3000000)
+                if($image_file_type='jpg' || $image_file_type='png' || $image_file_type='jpeg' || $image_file_type='gif')
+                    if(!file_exists($target_file))
+                        if(move_uploaded_file($file['tmp_name'], $target_file)) 
+                            $this->profile_avatar = basename($file['name']);
+                        else $this->errors[] = 'Could not upload file.';
+                    else $this->profile_avatar = basename($file['name']);
+                else $this->errors[] = 'Only jpg, jpeg, png and gif are supported.';
+            else $this->errors[] = 'This image is too big, use some other.';
+        } else $this->errors[] = 'This file is not an image';
     }
 }
