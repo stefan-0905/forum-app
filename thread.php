@@ -13,7 +13,7 @@ include "includes/showcase.php"; ?>
         <?php if(isset($_GET['thread_id']) && $thread = Thread::find($_GET['thread_id'])) : ?>
         <header class="mb-5">
             <div class="media">
-                <img src="https://placehold.it/80x80" alt="" class="d-flex mr-3">
+                <img src="img/thread_default.png" style="width:60px;" alt="" class="d-flex mr-3">
                 <div class="media-body">
                     <h3 class="mt-0"><?php echo $thread->subject; ?></h3>
                     <p class="text-secondary d-inline-block">
@@ -38,7 +38,10 @@ include "includes/showcase.php"; ?>
         ?>
         <div class="post row no-gutters mb-3">
             <div class="user-profile-section col-md-3 py-3 text-center">
-                <img src="https://placehold.it/80x80" alt="" class="mx-auto mb-3">
+                <img src="img/profile_images/<?php echo User::find($post->user_id)->profile_avatar; ?>" 
+                     style="width:40p;height:40px" 
+                     alt="" 
+                     class="mx-auto mb-3"/>
                 <p><?php echo User::find($post->user_id)->username; ?></p>
                 <p>Moderator</p>
                 <p>123 posts</p>
