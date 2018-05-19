@@ -1,9 +1,9 @@
 <?php include "includes/header.php";
-// Initializing Board List 
-$board_list = BoardList::find_all();
 
 if($session->is_signed_in()) {
     $privU = PrivilegedUser::find($session->user_id);
+} else {
+    redirect('index.php');
 }
 
 include "includes/nav.php";
