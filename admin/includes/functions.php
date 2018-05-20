@@ -32,9 +32,9 @@ function dateDiff($date1, $date2)
         return "On ".$date_1->format('Y-m-d');
     } elseif ($diff->days > 7) {
         return "On ".$date_1->format('M d');
-    } elseif ($diff->days > 2) {
-        return "On ".$date_1->format('L - H:i');
-    } elseif ($diff->days == 2) {
+    } elseif ($diff->days > 1) {
+        return "On ".$date_1->format('l - H:i');
+    } elseif ($diff->days == 1) {
         return "Yesterday at ".$date_1->format('H:i');
     } elseif ($diff->days > 0 OR $diff->h > 1) {
         return "Today at ".$date_1->format('H:i');

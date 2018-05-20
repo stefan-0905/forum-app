@@ -34,17 +34,18 @@ include "includes/showcase.php"; ?>
         <hr/>
         <?php 
         if($posts = Post::getRelatedPosts($thread->id)) {
+        $i = 1;
         foreach($posts as $post) {
+            $post_user = User::find($post->user_id);
         ?>
-        <div class="post row no-gutters mb-3">
+        <div id="post<?php echo $i; ?>" class="post row no-gutters mb-3">
             <div class="user-profile-section col-md-3 py-3 text-center">
-                <img src="img/profile_images/<?php echo User::find($post->user_id)->profile_avatar; ?>" 
+                <img src="img/profile_images/<?php echo $post_user->profile_avatar; ?>" 
                      style="width:40p;height:40px" 
                      alt="" 
                      class="mx-auto mb-3"/>
-                <p><?php echo User::find($post->user_id)->username; ?></p>
-                <p>Moderator</p>
-                <p>123 posts</p>
+                <p><?php echo $post_user->username; ?></p>
+                <p><?php echo $post_user->number_of_posts; ?> posts</p>
             </div>
             <div class="col-md-9 p-2">
                 <small>Posted 
@@ -56,13 +57,13 @@ include "includes/showcase.php"; ?>
                 <?php if($session->is_signed_in() && $session->user_id == $post->user_id) : ?>
                 <span><a href="#"><i class="fa fa-pencil"></i></a></span>
                 <?php endif; ?>
-                <span><a href="#"><i class="fa fa-exclamation-triangle"></i></a></span>
+                <span><a data-thread-id="<?php echo $_GET['thread_id']; ?>" data-bookmark="<?php echo $i; ?>" data-reported-user-id="<?php echo $post->user_id; ?>" class="report text-warning"><i class="fa fa-exclamation-triangle"></i></a></span>
                 </div>
                 <p><?php echo $post->message; ?></p>
             </div>
         </div>
         
-        <?php } 
+        <?php ++$i; } 
         } else echo "<p class='alert alert-danger'>Something went wrong. Looks like there is no OP for this thread.</p>";
         ?>
         <?php endif; 
@@ -71,10 +72,9 @@ include "includes/showcase.php"; ?>
         ?>
         <div id="reply-it" class="row no-gutters d-none">
             <div class="col-md-3 text-center border-right">
-                <img src="https://placehold.it/80x80" alt="" class="d-flex mx-auto">
+                <img src="img/profile_images/<?php echo User::find($session->user_id)->profile_avatar; ?>" alt="" class="d-flex mx-auto">
                 <p><?php echo User::find($session->user_id)->username; ?></p>
-                <p>Moderator</p>
-                <p>123 posts</p>
+                <p><?php echo User::find($session->user_id)->number_of_posts; ?> posts</p>
             </div>
             <div class="col-md-9 px-3">
                 <form action="includes/create_post.php?thread_id=<?php echo $_GET['thread_id']; ?>" method="POST">
