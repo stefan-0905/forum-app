@@ -15,7 +15,7 @@ include "includes/showcase.php"; ?>
             <main id="main-content" class="col-lg-9 mt-4 px-0">
                 <div class="card border-0">
                     <div class="card-header pt-3 px-3">
-                        <h3>Online Gamers Comunity</h3>
+                        <h3>Online Forum Comunity</h3>
                         <hr>
                         <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium alias, aliquam commodi cum dolorem dolores ea error fugiat molestias nemo neque recusandae rem similique sit soluta vero vitae voluptas.</p>
                     </div>

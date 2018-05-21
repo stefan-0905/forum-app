@@ -76,19 +76,28 @@ if(isset($_POST['add_topic'])) {
         else "Something went wrong, check your input.";
 }
 
-if(isset($_POST['reportPost'])) {
+if(isset($_POST['report_post'])) {
     global $database;
     $bookmark = $_POST['bookmark'];
     $reported_user_id = $_POST['reported_user_id'];
-    $thread_id = $_POST['thread_id'];
+    $post_id = $_POST['post_id'];
     $user = $session->user_id;
-    $sql = "INSERT INTO reported_posts(thread_id,reported_user_id,reported_by,bookmark) VALUES($thread_id,$reported_user_id,$user, $bookmark)";
+    
+    $sql = "INSERT INTO reported_posts(post_id,reported_user_id,reported_by,bookmark) VALUES($post_id,$reported_user_id,$user, $bookmark)";
     if($database->query($sql))
         echo "Post successfully reported.";
     else echo "Something went wrong with inserting report into database";
 }
 
-
+if(isset($_POST['approved_report'])) 
+{
+    $reported_post = Post::find($_POST['post_id']);
+    $reported_post_info = ReportedPost::find($_POST['report_id']);
+    
+    if($reported_post->delete())
+        if($reported_post_info->delete())
+            echo "Post successfully deleted.";
+}
 
 
 

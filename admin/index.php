@@ -46,7 +46,12 @@ include "includes/top_nav.php"; ?>
         <div class="container pt-2 pl-3">
 
         <h1>Dashboard</h1>
-        <div class="col-md-6">
+        <?php $reported_posts = ReportedPost::find_all();
+        if(!empty($reported_posts)) :
+        ?>
+        <div id="reported-posts" class="col-md-6 border p-3">
+        <h6>You have some reported posts you need to attend to.<p class="small">Please check them out down below.</p></h6>
+        
         <div class="row">
             <div class="col-md-4">
                 Reported User
@@ -59,9 +64,7 @@ include "includes/top_nav.php"; ?>
             </div>
         </div>
         <hr/>
-        <?php $reported_posts = ReportedPosts::find_all();
-              foreach($reported_posts as $reported_post) {
-        ?>
+        <?php foreach($reported_posts as $reported_post) : ?>
         <div class="row">
             <div class="col-md-4">
             <?php echo User::find($reported_post->reported_user_id)->username; ?>
@@ -70,14 +73,24 @@ include "includes/top_nav.php"; ?>
             <?php echo User::find($reported_post->reported_by)->username; ?>
             </div>
             <div class="col-md-4">
-            <a href="../thread.php?thread_id=<?php echo $reported_post->thread_id; ?>#post<?php echo $reported_post->bookmark; ?>" class="view btn btn-sm btn-info">View Post</a>
-            <a href="#" class="text-success"><span><i class="fa fa-check"></i></span></a>
-            <a href="#" class="text-danger"><span><i class="fa fa-times"></i></span></a>
+            <a href="../thread.php?thread_id=<?php echo Post::find($reported_post->post_id)->thread_id; ?>#post<?php echo $reported_post->bookmark; ?>" 
+               class="view btn btn-sm btn-info">View Post</a>
+            <a data-post-id="<?php echo $reported_post->post_id; ?>"
+               data-report-id="<?php echo $reported_post->id; ?>" 
+               class="approve-report text-success"
+               data-toggle="tooltip" 
+               data-placement="top" 
+               title="Accept Report and Delete Post"><span><i class="fa fa-check"></i></span></a>
+            <a class="reject-report text-danger"
+               data-toggle="tooltip" 
+               data-placement="top" 
+               title="Reject Report"><span><i class="fa fa-times"></i></span></a>
             </div>
         </div>
         <hr/>
-        <?php } ?>
+        <?php endforeach; ?>
         </div>
+        <?php endif; ?>
 
         </div>
     </main>
@@ -87,5 +100,9 @@ include "includes/top_nav.php"; ?>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/popper.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="js/reported_users.js"></script>
+<script>
+    $('[data-toggle="tooltip"]').tooltip();
+</script>
 </body>
 </html>

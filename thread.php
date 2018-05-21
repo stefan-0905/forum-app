@@ -53,12 +53,22 @@ include "includes/showcase.php"; ?>
                     echo dateDiff($post->updated_at, 'now');
                     ?>
                 </small>
+                <?php if($session->is_signed_in()) : ?>
                 <div class="d-inline pull-right">
-                <?php if($session->is_signed_in() && $session->user_id == $post->user_id) : ?>
+                <?php if($session->user_id == $post->user_id) : ?>
                 <span><a href="#"><i class="fa fa-pencil"></i></a></span>
                 <?php endif; ?>
-                <span><a data-thread-id="<?php echo $_GET['thread_id']; ?>" data-bookmark="<?php echo $i; ?>" data-reported-user-id="<?php echo $post->user_id; ?>" class="report text-warning"><i class="fa fa-exclamation-triangle"></i></a></span>
+                <span>
+                    <a data-toggle="modal" data-target="#reportUserModal"
+                       data-post-id="<?php echo $post->id; ?>" 
+                       data-bookmark="<?php echo $i; ?>" 
+                       data-reported-user-id="<?php echo $post->user_id; ?>" 
+                       class="text-warning">
+                        <i class="fa fa-exclamation-triangle"></i>
+                    </a>
+                </span>
                 </div>
+                <?php endif; ?>
                 <p><?php echo $post->message; ?></p>
             </div>
         </div>
@@ -91,7 +101,7 @@ include "includes/showcase.php"; ?>
 
 <?php 
 include "includes/signin_modal.php";
-include "includes/add_topic_modal.php";
+include "includes/confirm_report_modal.php";
 
 $script_array = array(
     'js/signin_ajax.js', 
