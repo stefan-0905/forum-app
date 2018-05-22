@@ -45,3 +45,25 @@ hr {
 #edit-profile-form {
   background-color: #4C6085;
 }
+.card-body .nav-item a.nav-link {
+  color: #fff;
+}
+.card-body .nav-item a.nav-link.active {
+  color: #333;
+}
+.user-post {
+  position: relative;
+}
+.user-post a {
+  color: #fff;
+}
+.user-post p {
+  margin-bottom: 0;
+}
+.user-post-options {
+  position: absolute;
+  top: 16px;
+}
+.user-post-options a i {
+  font-size:30px;
+}

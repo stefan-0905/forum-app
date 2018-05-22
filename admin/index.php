@@ -67,13 +67,13 @@ include "includes/top_nav.php"; ?>
         <?php foreach($reported_posts as $reported_post) : ?>
         <div class="row">
             <div class="col-md-4">
-            <?php echo User::find($reported_post->reported_user_id)->username; ?>
+            <?php echo User::find(Post::find($reported_post->post_id)->user_id)->username; ?>
             </div>
             <div class="col-md-4">
             <?php echo User::find($reported_post->reported_by)->username; ?>
             </div>
             <div class="col-md-4">
-            <a href="../thread.php?thread_id=<?php echo Post::find($reported_post->post_id)->thread_id; ?>#post<?php echo $reported_post->bookmark; ?>" 
+            <a href="../thread.php?thread_id=<?php echo Post::find($reported_post->post_id)->thread_id; ?>#post<?php echo $reported_post->post_id; ?>" 
                class="view btn btn-sm btn-info">View Post</a>
             <a data-post-id="<?php echo $reported_post->post_id; ?>"
                data-report-id="<?php echo $reported_post->id; ?>" 
@@ -82,6 +82,7 @@ include "includes/top_nav.php"; ?>
                data-placement="top" 
                title="Accept Report and Delete Post"><span><i class="fa fa-check"></i></span></a>
             <a class="reject-report text-danger"
+               data-report-id="<?php echo $reported_post->id; ?>" 
                data-toggle="tooltip" 
                data-placement="top" 
                title="Reject Report"><span><i class="fa fa-times"></i></span></a>
@@ -102,7 +103,9 @@ include "includes/top_nav.php"; ?>
 <script src="../js/bootstrap.min.js"></script>
 <script src="js/reported_users.js"></script>
 <script>
-    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip({
+        trigger: 'hover'
+    });
 </script>
 </body>
 </html>

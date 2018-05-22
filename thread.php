@@ -34,11 +34,10 @@ include "includes/showcase.php"; ?>
         <hr/>
         <?php 
         if($posts = Post::getRelatedPosts($thread->id)) {
-        $i = 1;
         foreach($posts as $post) {
             $post_user = User::find($post->user_id);
         ?>
-        <div id="post<?php echo $i; ?>" class="post row no-gutters mb-3">
+        <div id="post<?php echo $post->id; ?>" class="post row no-gutters mb-3">
             <div class="user-profile-section col-md-3 py-3 text-center">
                 <img src="img/profile_images/<?php echo $post_user->profile_avatar; ?>" 
                      style="width:40p;height:40px" 
@@ -61,8 +60,6 @@ include "includes/showcase.php"; ?>
                 <span>
                     <a data-toggle="modal" data-target="#reportUserModal"
                        data-post-id="<?php echo $post->id; ?>" 
-                       data-bookmark="<?php echo $i; ?>" 
-                       data-reported-user-id="<?php echo $post->user_id; ?>" 
                        class="text-warning">
                         <i class="fa fa-exclamation-triangle"></i>
                     </a>
@@ -73,7 +70,7 @@ include "includes/showcase.php"; ?>
             </div>
         </div>
         
-        <?php ++$i; } 
+        <?php } 
         } else echo "<p class='alert alert-danger'>Something went wrong. Looks like there is no OP for this thread.</p>";
         ?>
         <?php endif; 

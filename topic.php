@@ -40,7 +40,21 @@ include "includes/showcase.php"; ?>
                         <div class="media my-1 p-1">
                             <img src="img/thread_default.png" style="width:50px;height:50px;" class="d-flex mr-3 align-self-center">
                             <div class="media-body">
-                                <h6 class="my-0"><a href="thread.php?thread_id=<?php echo $thread->id; ?>"><?php echo $thread->subject ?></a></h6>
+                                <h6 class="my-0">
+                                    <a href="thread.php?thread_id=<?php echo $thread->id; ?>">
+                                    <?php 
+                                    $subject = $thread->subject; 
+                                    // If string has more then 50 characters 
+                                    if(strlen($subject) > 50) {
+                                        // Adding 3 dots in string
+                                        $subject = wordwrap($subject, 50, '...');
+                                        // Cutting string after 3 dots
+                                        $subject = substr($subject, 0, strpos($subject, '...')+3);
+                                    }
+                                    echo $subject;
+                                    ?>
+                                    </a>
+                                </h6>
                                 <small href="#"><a href="#"><?php echo User::find($thread->user_id)->username; ?></a> - <?php  echo dateDiff($thread->updated_at, 'now'); ?></small>
                             </div>
                         </div>
@@ -81,7 +95,21 @@ include "includes/showcase.php"; ?>
                 <div class="media mb-3">
                     <img src="img/profile_images/<?php echo User::find($topThread->user_id)->profile_avatar; ?>" style="width:40px;height:40px;" alt="" class="d-flex mr-3 align-self-center">
                     <div class="media-body">
-                        <h6 class="my-0"><a href="thread.php?thread_id=<?php echo $topThread->id; ?>"><?php echo $topThread->subject; ?></a></h6>
+                        <h6 class="my-0">
+                            <a href="thread.php?thread_id=<?php echo $topThread->id; ?>">
+                            <?php 
+                            $subject = $topThread->subject; 
+                            // If string has more then 50 characters 
+                            if(strlen($subject) > 50) {
+                                // Adding 3 dots in string
+                                $subject = wordwrap($subject, 50, '...');
+                                // Cutting string after 3 dots
+                                $subject = substr($subject, 0, strpos($subject, '...')+3);
+                            }
+                            echo $subject;
+                            ?>
+                            </a>
+                        </h6>
                         <a href="#"><?php echo User::find($topThread->user_id)->username; ?></a> - <span class="text-muted"><?php echo dateDiff($topThread->created_at, 'now'); ?></span>
                     </div>
                 </div>

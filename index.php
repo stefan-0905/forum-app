@@ -53,8 +53,34 @@ include "includes/showcase.php"; ?>
                                     <div class="media my-1 p-1">
                                         <img src="img/topic_default.png" style="width:50px;height:50px;" alt="Board Topic" class="d-flex mr-3 align-self-center">
                                         <div class="media-body">
-                                            <h6 class="mt-0"><a href="topic.php?topic_id=<?php echo $topic->id; ?>"><?php echo $topic->title; ?></a></h6>
-                                            <span class="text-muted"><?php echo $topic->description; ?></span>
+                                            <h6 class="mt-0">
+                                                <a href="topic.php?topic_id=<?php echo $topic->id; ?>">
+                                                <?php 
+                                                $title = $topic->title; 
+                                                // If string has more then 50 characters 
+                                                if(strlen($title) > 50) {
+                                                    // Adding 3 dots in string
+                                                    $title = wordwrap($title, 50, '...');
+                                                    // Cutting string after 3 dots
+                                                    $title = substr($title, 0, strpos($title, '...')+3);
+                                                }
+                                                echo $title;
+                                                ?>
+                                                </a>
+                                            </h6>
+                                            <span class="text-muted">
+                                                <?php 
+                                                $description = $topic->description; 
+                                                // If string has more then 50 characters 
+                                                if(strlen($description) > 50) {
+                                                    // Adding 3 dots in string
+                                                    $description = wordwrap($description, 50, '...');
+                                                    // Cutting string after 3 dots
+                                                    $description = substr($description, 0, strpos($description, '...')+3);
+                                                }
+                                                echo $description;
+                                                ?>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -72,7 +98,21 @@ include "includes/showcase.php"; ?>
                                         <img src="img/profile_images/<?php echo User::find($latest_thread->user_id)->profile_avatar; ?>" style="width:40px;height:40px;" alt="User Avatar"
                                              class="d-flex mr-3 align-self-center rounded">
                                         <div class="media-body">
-                                            <h6 class="my-0"><a href="thread.php?thread_id=<?php echo $latest_thread->id; ?>"><?php echo $latest_thread->subject; ?></a></h6>
+                                            <h6 class="my-0">
+                                                <a href="thread.php?thread_id=<?php echo $latest_thread->id; ?>">
+                                                <?php 
+                                                $subject = $latest_thread->subject; 
+                                                // If string has more then 50 characters 
+                                                if(strlen($subject) > 50) {
+                                                    // Adding 3 dots in string
+                                                    $subject = wordwrap($subject, 50, '...');
+                                                    // Cutting string after 3 dots
+                                                    $subject = substr($subject, 0, strpos($subject, '...')+3);
+                                                }
+                                                echo $subject;
+                                                ?>
+                                                </a>
+                                            </h6>
                                             <a href="#"><?php echo User::find($latest_thread->user_id)->username; ?></a> - <span class="text-muted"><?php echo dateDiff($latest_thread->created_at, 'now'); ?></span>
                                         </div>
                                     </div>
@@ -100,7 +140,21 @@ include "includes/showcase.php"; ?>
                         <div class="media mb-3">
                             <img src="img/profile_images/<?php echo User::find($topThread->user_id)->profile_avatar; ?>" style="width:40px;height:40px;" alt="" class="d-flex mr-3 align-self-center">
                             <div class="media-body">
-                                <h6 class="my-0"><a href="thread.php?thread_id=<?php echo $topThread->id; ?>"><?php echo $topThread->subject; ?></a></h6>
+                                <h6 class="my-0">
+                                    <a href="thread.php?thread_id=<?php echo $topThread->id; ?>">
+                                    <?php 
+                                    $subject = $topThread->subject; 
+                                    // If string has more then 50 characters 
+                                    if(strlen($subject) > 50) {
+                                        // Adding 3 dots in string
+                                        $subject = wordwrap($subject, 50, '...');
+                                        // Cutting string after 3 dots
+                                        $subject = substr($subject, 0, strpos($subject, '...')+3);
+                                    }
+                                    echo $subject; 
+                                    ?>
+                                    </a>
+                                </h6>
                                 <a href="#"><?php echo User::find($topThread->user_id)->username; ?></a> - <span class="text-muted"><?php echo dateDiff($topThread->created_at, 'now'); ?></span>
                             </div>
                         </div>

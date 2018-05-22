@@ -24,6 +24,14 @@ class Post extends Db_object
     $related_posts = self::find_by_query($sql);
     if(!empty($related_posts))
         return $related_posts;
+    else return false;
+    }
+    public static function getUserRelatedPosts($user_id)
+    {
+        $sql = "SELECT * FROM posts WHERE user_id = $user_id";
+        $related_posts = self::find_by_query($sql);
+        if(!empty($related_posts))
+            return $related_posts;
         else return false;
     }
     public static function getLastPost(int $thread_id)

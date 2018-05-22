@@ -78,12 +78,10 @@ if(isset($_POST['add_topic'])) {
 
 if(isset($_POST['report_post'])) {
     global $database;
-    $bookmark = $_POST['bookmark'];
-    $reported_user_id = $_POST['reported_user_id'];
     $post_id = $_POST['post_id'];
     $user = $session->user_id;
     
-    $sql = "INSERT INTO reported_posts(post_id,reported_user_id,reported_by,bookmark) VALUES($post_id,$reported_user_id,$user, $bookmark)";
+    $sql = "INSERT INTO reported_posts(post_id,reported_by) VALUES($post_id,$user)";
     if($database->query($sql))
         echo "Post successfully reported.";
     else echo "Something went wrong with inserting report into database";
@@ -98,7 +96,12 @@ if(isset($_POST['approved_report']))
         if($reported_post_info->delete())
             echo "Post successfully deleted.";
 }
-
+if(isset($_POST['reject_report']))
+{
+    $report_id = ReportedPost::find($_POST['report_id']);
+    if($report_id->delete())
+        echo "Report rejected.";
+}
 
 
 ?>

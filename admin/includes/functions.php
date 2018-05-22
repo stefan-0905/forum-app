@@ -34,9 +34,11 @@ function dateDiff($date1, $date2)
         return "On ".$date_1->format('M d');
     } elseif ($diff->days > 1) {
         return "On ".$date_1->format('l - H:i');
-    } elseif ($diff->days == 1) {
+    } elseif ($diff->days == 1 OR 
+             ((($date_2->format('d')-$date_1->format('d')) > 0) && 
+                 ($date_2->format('m') == $date_1->format('m')))) {
         return "Yesterday at ".$date_1->format('H:i');
-    } elseif ($diff->days > 0 OR $diff->h > 1) {
+    } elseif ($diff->days == 0 OR $diff->h > 0) {
         return "Today at ".$date_1->format('H:i');
     } elseif ($diff->i >= 1) {
         return $diff->i." min ago";
