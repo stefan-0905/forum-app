@@ -39,7 +39,7 @@ if(isset($_GET['delete_post']) && !empty($_GET['delete_post']))
 {
     $post_to_delete = Post::find($_GET['delete_post']);
     if($post_to_delete->delete())
-        redirect("edit_profile.php");
+        redirect("../edit_profile.php");
 }
 
 
