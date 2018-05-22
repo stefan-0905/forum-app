@@ -88,7 +88,7 @@ include "includes/showcase.php"; ?>
                                 <div class="user-post-options d-inline w-25 my-auto">
                                     <span class="pull-right">
                                         <a href="edit_post.php?post_id=<?php echo $user_post->id; ?>"><i class="text-warning fa fa-edit"></i></a>
-                                        <a href="#"><i class="text-danger fa fa-times"></i></a>     
+                                        <a href="includes/update_post.php?delete_post=<?php echo $user_post->id; ?>"><i class="text-danger fa fa-times"></i></a>     
                                     </span>
                                 </div>
                             </div>
