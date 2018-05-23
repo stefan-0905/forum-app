@@ -31,7 +31,20 @@ class Topic extends Db_object
         if($result) return $result;
         else return false;
     }
-    
+    public function deleteRelatedThreadsAndPosts()
+    {
+        $sql = "SELECT * FROM threads WHERE topic_id = $this->id";
+        $threads = Thread::find_by_query($sql);
+        foreach($threads as $thread) {
+            $sql = "SELECT * FROM posts WHERE thread_id = $thread->id";
+            $posts = Post::find_by_query($sql);
+            foreach($posts as $post) {
+                User::find($post->user_id)->number_of_posts--;
+                $post->delete();
+            }
+            $thread->delete();
+        }
+    }
 }
 
 

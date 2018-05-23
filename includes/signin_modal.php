@@ -1,8 +1,8 @@
 
 
 <!-- LOGIN MODAL -->
-<div class="modal" id="loginModal" style="top:10%">
-    <div class="modal-dialog">
+<div class="modal" id="loginModal">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-dark text-light">
                 <h5 class="modal-title">Login</h5>

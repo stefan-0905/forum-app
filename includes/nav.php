@@ -30,7 +30,7 @@
                 <?php else : ?>
                 <li class="nav-item dropdown mr-3">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-user"></i> Welcome, Stefan
+                        <i class="fa fa-user"></i> Welcome, <?php echo $privU->username; ?>
                     </a>
                     <div class="dropdown-menu">
                         <a href="edit_profile.php" class="dropdown-item">

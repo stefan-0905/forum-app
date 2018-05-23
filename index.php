@@ -7,7 +7,7 @@ if($session->is_signed_in()) {
 }
 
 include "includes/nav.php";
-include "includes/showcase.php"; ?>
+include "includes/showcase.php";?>
 
 <!-- CONTENT -->
         <div class="row m-3 px-3">
@@ -37,7 +37,7 @@ include "includes/showcase.php"; ?>
                                         <a id="<?php echo $board_item->id; ?>" data-toggle="modal" data-target="#addTopicModal" class="text-secondary" title="Quick Add Topic"><small><i class="fa fa-plus"></i></small></a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a class="text-secondary" title="Edit Board Item"><small><i class="fa fa-gear"></i></small></a>
+                                        <a data-bulletin="<?php echo $i; ?>" data-toggle="modal" data-target="#boardSettingsModal" class="text-secondary" title="Edit Board Items"><small><i class="fa fa-gear"></i></small></a>
                                     </li>
                                 </ul>
                                 <?php endif; ?>
@@ -167,6 +167,7 @@ include "includes/showcase.php"; ?>
 <?php
 include "includes/signin_modal.php"; 
 include "includes/add_topic_modal.php"; 
+include "includes/board_settings_modal.php";
 
 $script_array = array (
     'js/signin_ajax.js',

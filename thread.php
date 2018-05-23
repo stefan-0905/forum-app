@@ -54,8 +54,8 @@ include "includes/showcase.php"; ?>
                 </small>
                 <?php if($session->is_signed_in()) : ?>
                 <div class="d-inline pull-right">
-                <?php if($session->user_id == $post->user_id) : ?>
-                <span><a href="#"><i class="fa fa-pencil"></i></a></span>
+                <?php if($privU->hasPrivilege('user_management')) : ?>
+                <span><a href="edit_post.php?post_id=<?php echo $post->id; ?>"><i class="fa fa-pencil"></i></a></span>
                 <?php endif; ?>
                 <span>
                     <a data-toggle="modal" data-target="#reportUserModal"

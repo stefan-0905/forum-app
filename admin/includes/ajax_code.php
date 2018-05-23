@@ -103,5 +103,19 @@ if(isset($_POST['reject_report']))
         echo "Report rejected.";
 }
 
+if(isset($_POST['delete_topic']))
+{
+    $topic = Topic::find($_POST['topic_id']);
+    $topic->deleteRelatedThreadsAndPosts();
+    $topic->delete();
+    echo $_POST['topic_id'];
+}
+
+if(isset($_POST['delete_thread']))
+{
+    $thread = thread::find($_POST['thread_id']);
+    if($thread->delete())
+        echo $_POST['thread_id'];
+}
 
 ?>

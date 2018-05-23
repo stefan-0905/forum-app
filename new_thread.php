@@ -9,7 +9,7 @@ include "includes/showcase.php"; ?>
 <!-- CONTENT -->
 <div class="row mt-5">
     
-    <main id="main-content" class="col-lg-10 mx-auto bg-light pt-3">
+    <main id="main-content" class="col-lg-10 mx-auto bg-light py-3">
         <header>
             <h3>New Thread</h3>
             <p class="text-secondary">At begining your threads will need to be approved by our moderators regarding spam issues</p>
@@ -25,7 +25,7 @@ include "includes/showcase.php"; ?>
                 <textarea rows="5" placeholder="Message" id="message" name="content" class="form-control w-100"></textarea>
             </div>
             <input type="hidden" name="user_id" value="<?php echo $session->user_id; ?>">
-            <input type="submit" name="create_thread" class="btn btn-primary" value="Create Thread"/>
+            <input type="submit" name="create_thread" class="pull-right btn btn-success" value="Create Thread"/>
 
         </form>
     </main>

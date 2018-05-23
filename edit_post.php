@@ -8,9 +8,8 @@ if($session->is_signed_in()) {
 if(!isset($_GET['post_id'])) 
     redirect("error404.php?message=This page doesn't exist.");
 $post = Post::find($_GET['post_id']);
-if(!($post && $session->user_id == $post->user_id))
-    redirect("error404.php?message=This post doesn't exist.");
-    
+if($session->user_id == $post->user_id OR $privU->hasPrivilege('user_management')) {
+
 include "includes/nav.php";
 include "includes/showcase.php"; ?>
 
@@ -20,22 +19,23 @@ include "includes/showcase.php"; ?>
         <div id="edit-profile-form" class="card border-0">
             <div class="card-header border-bottom-0 text-light bg-dark">
                 <div class="row no-gutters">
+                    <?php $post_user = User::find(Post::find($_GET['post_id'])->user_id); ?>
                     <div class="col-md-2 text-center">
-                        <img src="img/profile_images/<?php echo $privU->profile_avatar; ?>" 
+                        <img src="img/profile_images/<?php echo $post_user->profile_avatar; ?>" 
                              style="width:100px;height:100px;" 
                              class="d-inline-block" 
                              alt="User Avatar"/>
                     </div>
                     <div class="col-md-10">
-                        <h3><?php echo strtoupper($privU->username); ?></h3>
+                        <h3><?php echo strtoupper($post_user->username); ?></h3>
                         <p class="m-0">Member since 
-                        <?php $date = new DateTime($privU->created_at);
+                        <?php $date = new DateTime($post_user->created_at);
                         echo $date->format('F jS Y'); ?></p>
-                        <p class="m-0">Posts: <?php echo $privU->number_of_posts; ?></p>
+                        <p class="m-0">Posts: <?php echo $post_user->number_of_posts; ?></p>
                     </div>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body text-light">
                 <form action="includes/update_post.php?post_id=<?php echo $post->id ?>" method="POST">
                 <?php 
                 $thread = Thread::find($post->thread_id);
@@ -65,6 +65,8 @@ include "includes/showcase.php"; ?>
 </div>
 
 <?php
+} else redirect("error404.php?message=You are not eligible to do this action");
+
 include "includes/signin_modal.php"; 
 include "includes/add_topic_modal.php"; 
 
