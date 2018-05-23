@@ -1,4 +1,8 @@
-<?php include "includes/header.php";
+<?php 
+require_once "admin/includes/init.php";
+//$site_title = pathinfo(basename(__FILE__), PATHINFO_FILENAME); echo $site_title;
+$site_title = "Home";
+include "includes/header.php";
 // Initializing Board List 
 $board_list = BoardList::find_all();
 

@@ -1,4 +1,7 @@
-<?php include "includes/header.php";
+<?php 
+require_once("includes/init.php");
+$site_title = "Roles";
+include "includes/header.php";
 $access_permission = "role_management";
 
 if($session->is_signed_in()) {

@@ -1,4 +1,7 @@
-<?php include "includes/header.php";
+<?php
+require_once("includes/init.php");
+$site_title = "Users";
+include "includes/header.php";
 $access_permision = "user_management";
 
 if($session->is_signed_in()) {

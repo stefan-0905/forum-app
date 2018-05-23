@@ -1,6 +1,5 @@
 <?php
 ob_start();
-require_once("init.php");
 ?>
 
 <!doctype html>
@@ -10,7 +9,8 @@ require_once("init.php");
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Dashboard - Admin</title>
+    <title>Admin <?php if(isset($site_title)) echo "- " . $site_title; ?></title>
+    <link rel="shortcut icon" href="../img/bitnami.ico"/>
     <link rel="stylesheet" href="../css/font-awesome.min.css"/>
     <link rel="stylesheet" href="../css/bootstrap.css"/>
     <link rel="stylesheet" href="../css/admin_style.css"/>

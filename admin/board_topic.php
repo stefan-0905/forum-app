@@ -1,4 +1,6 @@
-<?php include "includes/header.php";
+<?php 
+require_once("includes/init.php");
+include "includes/header.php";
 $access_permision = "board_topic_management";
 
 if($session->is_signed_in()) {

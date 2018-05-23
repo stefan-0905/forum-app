@@ -1,4 +1,14 @@
-<?php include "includes/header.php";
+<?php 
+require_once "admin/includes/init.php";
+try {
+    if(!isset($_GET['thread_id']))
+        throw new Exception("Navigation system doesnt work like this. You need to set thread_id.");
+    if(!$thread = Thread::find($_GET['thread_id']))
+        throw new Exception("Thread you are trying to reach doesnt exist.");
+} catch(Exception $ex) {
+    redirect("error404.php?message=Caught Exception: ". $ex->getMessage());
+}
+include "includes/header.php";
 
 if($session->is_signed_in()) {
     $privU = PrivilegedUser::find($session->user_id);
@@ -10,7 +20,7 @@ include "includes/showcase.php"; ?>
 <!-- CONTENT -->
 <div class="m-3">
     <main id="main-content" class="col-lg-9 bg-light mx-auto p-5">
-        <?php if(isset($_GET['thread_id']) && $thread = Thread::find($_GET['thread_id'])) : ?>
+        <?php if($thread) : ?>
         <header class="mb-5">
             <div class="media">
                 <img src="img/thread_default.png" style="width:60px;" alt="" class="d-flex mr-3">

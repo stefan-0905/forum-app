@@ -1,4 +1,6 @@
 <?php
+require_once "admin/includes/init.php";
+$site_title = "Register";
 include "includes/header.php";
 include "includes/nav.php";
 include "includes/showcase.php";

@@ -1,4 +1,7 @@
-<?php include "includes/header.php";
+<?php 
+require_once("includes/init.php");
+$site_title = "Dashboard";
+include "includes/header.php";
 $access_permision = "admin_panel";
 
 if($session->is_signed_in()) {

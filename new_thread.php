@@ -1,4 +1,6 @@
-<?php include "includes/header.php";
+<?php 
+require_once "admin/includes/init.php";
+include "includes/header.php";
 
 if($session->is_signed_in()) {
     $privU = PrivilegedUser::find($session->user_id);
@@ -12,7 +14,7 @@ include "includes/showcase.php"; ?>
     <main id="main-content" class="col-lg-10 mx-auto bg-light py-3">
         <header>
             <h3>New Thread</h3>
-            <p class="text-secondary">At begining your threads will need to be approved by our moderators regarding spam issues</p>
+            <p class="text-secondary">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, voluptates ad? Reprehenderit inventore rerum natus omnis iusto, placeat iste nihil!</p>
         </header>
         <form class="mb-3" action="includes/create_thread.php?topic_id=<?php if(isset($_GET['topic_id'])) echo $_GET['topic_id']; ?>" method="POST">
         

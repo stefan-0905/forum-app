@@ -1,4 +1,15 @@
-<?php include "includes/header.php";
+<?php 
+require_once "admin/includes/init.php";
+try{
+    if(!isset($_GET['topic_id']))
+        throw new Exception("Navigation system doesnt work like this. You need to set topic_id.");
+    if(!$topic = Topic::find($_GET['topic_id']))
+        throw new Exception("Topic with this id doesn't exist.");
+} catch(Exception $ex) {
+    redirect("error404.php?message=Caught Exception: ". $ex->getMessage());
+}
+$site_title = $topic->title;
+include "includes/header.php";
 
 if($session->is_signed_in()) {
     $privU = PrivilegedUser::find($session->user_id);
@@ -11,7 +22,7 @@ include "includes/showcase.php"; ?>
 <div class="row m-3 px-3">
     
     <main id="main-content" class="col-lg-9 bg-light mt-4 py-3 px-3 rounded">
-        <?php if($topic = Topic::find($_GET['topic_id'])) { ?>
+        <?php if($topic) { ?>
             <header class="mb-5">
                 <h3><?php echo $topic->title ?></h3>
                 <p class="lead d-inline"><?php echo $topic->description; ?></p>
