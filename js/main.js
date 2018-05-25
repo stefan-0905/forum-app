@@ -20,7 +20,7 @@ $(document).ready(function(){
                 }
             }
         });
-    })
+    });
     $('#reportUserModal').on('show.bs.modal', function(e) {
         let modal = $(this);
         let post_id = e.relatedTarget.dataset['postId'];
@@ -39,8 +39,8 @@ $(document).ready(function(){
             });
         });
     });
-    $('#boardSettingsModal').on('show.bs.modal', function(e) {
-        let modal = $(this);
+    let board_settings = '#boardSettingsModal';
+    $(board_settings).on('show.bs.modal', function(e) {
         let bulletin = e.relatedTarget.dataset['bulletin'];
         $(".tab-bulletin" + bulletin).addClass('active');
         $(".pane-bulletin" + bulletin).addClass('show').addClass('active').attr('aria-selected', 'true');
@@ -65,10 +65,10 @@ $(document).ready(function(){
                 }
             });
         })
-    })
-    $('#boardSettingsModal').on('hide.bs.modal', function() {
-        $("#boardSettingsModal .nav-link").removeClass('active');
-        $("#boardSettingsModal .tab-pane").removeClass('active').removeClass('show');
+    });
+    $(board_settings).on('hide.bs.modal', function() {
+        $(board_settings+" .nav-link").removeClass('active');
+        $(board_settings+" .tab-pane").removeClass('active').removeClass('show');
     })
 
-})
+});
