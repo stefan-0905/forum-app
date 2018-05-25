@@ -1,8 +1,7 @@
 <?php
 
-defined("DS") ? NULL : define("DS", DIRECTORY_SEPARATOR); // DS represents Directory Separator
-
-define('SITE_ROOT', 'C:'.DS.'xampp'.DS.'htdocs'.DS.'forum-app');
+//defined("DS") ? NULL : define("DS", DIRECTORY_SEPARATOR); // DS represents Directory Separator | Needed only for local version
+define('SITE_ROOT', '//app//'); // for local version C:\xampp\htdocs\forum-app\
 
 require_once "functions.php";
 require_once "db_config.php";
