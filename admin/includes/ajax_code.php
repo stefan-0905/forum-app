@@ -107,6 +107,7 @@ if(isset($_POST['delete_topic']))
 {
     $topic = Topic::find($_POST['topic_id']);
     $topic->deleteRelatedThreadsAndPosts();
+    $topic->deleteRelationWithBoardList();
     $topic->delete();
     echo $_POST['topic_id'];
 }
