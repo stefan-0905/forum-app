@@ -40,6 +40,14 @@ include "includes/showcase.php"; ?>
             <div class="card-body text-light">
                 <form action="includes/update_post.php?post_id=<?php echo $post->id ?>" method="POST">
                 <?php 
+                if(!empty($_GET['errors'])) 
+                {
+                    $errors = unserialize($_GET['errors']);
+                    echo "<p class='alert alert-danger'>";
+                    foreach($errors as $error)
+                        echo $error . "<br/>";
+                    echo "</p>";
+                } 
                 $thread = Thread::find($post->thread_id);
                 if($thread && $thread->user_id == $post->user_id) :
                 ?>
@@ -48,7 +56,7 @@ include "includes/showcase.php"; ?>
                     <input type="text" 
                            class="form-control" 
                            name="thread_subject" 
-                           id="thread-subject" value="<?php echo $thread->subject; ?>"/>
+                           id="thread-subject" value="<?php echo $thread->subject; ?>" required/>
                 </div>    
                 <?php endif; ?>
                 <div class="form-group">
@@ -57,8 +65,17 @@ include "includes/showcase.php"; ?>
                               placeholder="Message" 
                               id="message" 
                               name="content" 
-                              class="form-control w-100"><?php echo $post->message; ?></textarea>
+                              class="form-control w-100" required><?php echo $post->message; ?></textarea>
                 </div>
+                <a 
+                href="
+                <?php 
+                if($privU->id == $_GET['post_id'])
+                    echo "edit_profile.php?user_id=" . Post::find($_GET['post_id'])->user_id; 
+                elseif($privU->hasPrivilege('user_management'))
+                    echo "thread.php?thread_id=".$post->thread_id."#post".$post->id;
+                ?>" 
+                class="btn btn-lg btn-secondary">Cancel</a>
                 <input type="submit" name="update_post" value="Update Post" class="pull-right btn btn-lg btn-warning"/>
                 </form>
             </div>
