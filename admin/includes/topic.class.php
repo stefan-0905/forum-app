@@ -38,6 +38,14 @@ class Topic extends Db_object
             $thread->delete();
         }
     }
+    public function deleteRelationWithBoardList()
+    {
+        global $database;
+        $sql= "DELETE FROM board_list_topics WHERE topic_id = ".$this->id;
+        if($database->query($sql))
+            return true;
+        else return false;
+    }
 }
 
 
