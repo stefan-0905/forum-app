@@ -13,7 +13,7 @@
                     <a href="profile.html" class="dropdown-item">
                         <i class="fa fa-user-circle"></i> Profile
                     </a>
-                    <a href="settings.html" class="dropdown-item">
+                    <a href="#" class="dropdown-item">
                         <i class="fa fa-gear"></i> Settings
                     </a>
                     <a href="includes/logout.php" class="dropdown-item">
