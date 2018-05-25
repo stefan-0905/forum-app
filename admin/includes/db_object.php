@@ -7,8 +7,8 @@ class Db_object {
 
     public function __construct()
     {
-        $this->created_at = date('Y-m-d h:i:sa');
-        $this->updated_at = date('Y-m-d h:i:sa');
+        $this->created_at = date('Y-m-d H:i:sa');
+        $this->updated_at = date('Y-m-d H:i:sa');
     }
     public static function find_all()
     {
@@ -92,7 +92,7 @@ class Db_object {
         foreach($properties as $key => $value) {
             $properties_pairs[] = "{$key}='{$value}'";
         }
-
+        $properties_pairs[count($properties_pairs)-1] = "updated_at='".date('Y-m-d H:i:sa')."'";
         $sql = "UPDATE " . static::$db_table . " SET ";
         $sql .= implode(", ", $properties_pairs);
         $sql .= " WHERE id = " . $database->escape_string($this->id);
