@@ -7,14 +7,7 @@ class Topic extends Db_object
     public $id;
     public $title;
     public $description;
-    public $created_at;
-    public $updated_at;
 
-    public function __construct()
-    {
-        $this->created_at = date('Y-m-d H:i:sa');
-        $this->updated_at = date('Y-m-d H:i:sa');
-    }
     public function append_to_board($board_item_id)
     {
         global $database;

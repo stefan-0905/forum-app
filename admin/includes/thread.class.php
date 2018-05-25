@@ -8,14 +8,7 @@ class Thread extends Db_object
     public $topic_id;
     public $user_id;
     public $subject;
-    public $created_at;
-    public $updated_at;
 
-    public function __construct()
-    {
-        $this->created_at = date('Y-m-d H:i:sa');
-        $this->updated_at = date('Y-m-d H:i:sa');
-    }
     public static function getRelatedThreads(int $topic_id)
     {
         $sql = "SELECT * FROM threads WHERE topic_id = {$topic_id} ORDER BY created_at DESC";

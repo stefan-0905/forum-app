@@ -6,13 +6,7 @@ class Permission extends Db_object
     protected static $db_table_fields = array('id','name','created_at','updated_at');
     public $id;
     public $name;
-    public $created_at;
-    public $updated_at;
-    public function __construct()
-    {
-        $this->created_at = date('Y-m-d H:i:sa');
-        $this->updated_at = date('Y-m-d H:i:sa');
-    }
+    
     public static function find_by_name($name) {
         $sql = "SELECT * FROM " . self::$db_table . " WHERE name = '" . $name . "'";
         $result = self::find_by_query($sql);

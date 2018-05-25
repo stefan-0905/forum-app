@@ -6,14 +6,11 @@ class Role extends Db_object
     protected static $db_table_fields = array('id','name','created_at','updated_at');
     public $id;
     public $name;
-    public $created_at;
-    public $updated_at;
     public $permissions;
 
     public function __construct()
     {
-        $this->created_at = date('Y-m-d H:i:sa');
-        $this->updated_at = date('Y-m-d H:i:sa');
+        parent::__construct();
         $this->permissions = array();
     }
     public static function find_by_name($name) {

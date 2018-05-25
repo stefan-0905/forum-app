@@ -1,8 +1,15 @@
 <?php
 
 class Db_object {
+    public $created_at;
+    public $updated_at;
     public $errors = array();
 
+    public function __construct()
+    {
+        $this->created_at = date('Y-m-d h:i:sa');
+        $this->updated_at = date('Y-m-d h:i:sa');
+    }
     public static function find_all()
     {
         return static::find_by_query("SELECT * FROM " . static::$db_table);

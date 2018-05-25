@@ -1,8 +1,4 @@
-<?php require_once("header.php"); ?>
-
-<?php
-
+<?php require_once("init.php"); 
 $session->logout();
 redirect("../../index.php");
-
 ?>

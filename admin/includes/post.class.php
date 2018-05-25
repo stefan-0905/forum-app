@@ -9,15 +9,7 @@ class Post extends Db_object
     public $thread_id;
     public $user_id;
     public $message;
-    public $created_at;
-    public $updated_at;
-
-    public function __construct()
-    {
-        $this->created_at = date('Y-m-d H:i:sa');
-        $this->updated_at = date('Y-m-d H:i:sa');
-    }
-
+    
     public static function getRelatedPosts($thread_id)
     {
     $sql = "SELECT * FROM posts WHERE thread_id = {$thread_id}";

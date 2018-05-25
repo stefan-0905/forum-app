@@ -10,13 +10,9 @@ class User extends Db_object
     public $password;
     public $number_of_posts;
     public $profile_avatar;
-    public $created_at;
-    public $updated_at;
 
     public function __construct()
     {
-        $this->created_at = date('Y-m-d H:i:sa');
-        $this->updated_at = date('Y-m-d H:i:sa');
         $this->profile_avatar = "user_default_blue.png";
     }
     public static function check_username($username)
@@ -79,7 +75,7 @@ class User extends Db_object
     }
     public function saveAvatar($file)
     {
-        $target_dir = SITE_ROOT . DS ."img".DS."profile_images" . DS;
+        $target_dir = SITE_ROOT . "img/profile_images/"; // For local version img\profile_images\
         $target_file = $target_dir . basename($file['name']);
         $image_file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 

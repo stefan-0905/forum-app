@@ -6,14 +6,11 @@ class BoardList extends Db_object
     protected static $db_table_fields = array('id', 'title', 'created_at', 'updated_at');
     public $id;
     public $title;
-    public $created_at;
-    public $updated_at;
     public $list_items;
 
     public function __construct()
     {
-        $this->created_at = date('Y-m-d h:i:sa');
-        $this->updated_at = date('Y-m-d h:i:sa');
+        parent::__construct();
     }
     public function getBoardListItems()
     {
