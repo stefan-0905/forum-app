@@ -79,7 +79,7 @@ include "includes/top_nav.php"; ?>
                                 <?php endforeach; ?>
                                 </select>
                                 <a data-id="<?php echo $user->id; ?>" class="change-role text-primary"><i class="fa fa-edit"></i></a>
-                                <a data-id="<?php echo $user->id; ?>" class="delete-user text-danger"><i class="fa fa-times"></i></a>
+                                <a data-id="<?php echo $user->id; ?>" class="delete-user btn btn-sm btn-danger text-light py-0">Delete</a>
                             </div>
                         </div>
                         <hr class="m-0">
@@ -108,13 +108,13 @@ include "includes/top_nav.php"; ?>
                         <div class="col px-2"><?php echo $without_role_user->email; ?></div>
                         <div class="col px-2"><?php echo $without_role_user->username; ?></div>
                         <div class="col px-2">
-                        <select name="role_change()" id="role-change" class="d-none">
-                        <?php foreach($roles as $role) : ?>
-                            <option value="<?php echo $role->id; ?>"><?php echo $role->name; ?></option>
-                        <?php endforeach; ?>
-                        </select>
+                            <select name="role_change()" id="role-change" class="d-none">
+                            <?php foreach($roles as $role) : ?>
+                                <option value="<?php echo $role->id; ?>"><?php echo $role->name; ?></option>
+                            <?php endforeach; ?>
+                            </select>
                             <a title="Update Role" data-id="<?php echo $without_role_user->id; ?>" class="change-role text-primary"><i class="fa fa-edit"></i></a>
-                            <a title="Delete User" data-id="<?php echo $without_role_user->id; ?>" class="delete-user text-danger"><i class="fa fa-times"></i></a>
+                            <a title="Delete User" data-id="<?php echo $without_role_user->id; ?>" class="delete-user btn btn-sm btn-danger text-light py-0">Delete</a>
                         </div>
                     </div>
                     <hr class="m-0">

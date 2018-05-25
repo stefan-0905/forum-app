@@ -104,7 +104,7 @@ include "includes/top_nav.php"; ?>
                             <td><?php echo $role->name; ?></td>
                             <td>
                                 <a href="roles.php?role_id=<?php echo $role->id; ?>" class="edit-role text-primary"><i class="fa fa-edit"></i></a>
-                                <a data-id="<?php echo $role->id; ?>" class="delete_role text-danger"><i class="fa fa-times"></i></a>
+                                <a data-id="<?php echo $role->id; ?>" class="delete_role btn btn-sm btn-danger text-light py-0">Delete</a>
                             </td>
                         </tr>
                     <?php endforeach; } ?>
