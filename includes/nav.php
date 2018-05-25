@@ -10,13 +10,13 @@
                     <a href="index.php" class="nav-link active">Home</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a href="posts.html" class="nav-link">Information</a>
+                    <a href="#" class="nav-link">Information</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a href="categories.html" class="nav-link">Download</a>
+                    <a href="#" class="nav-link">Download</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a href="categories.html" class="nav-link">Official Site</a>
+                    <a href="#" class="nav-link">Official Site</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -36,7 +36,7 @@
                         <a href="edit_profile.php" class="dropdown-item">
                             <i class="fa fa-user-circle"></i> Edit Profile
                         </a>
-                        <a href="settings.html" class="dropdown-item">
+                        <a href="#" class="dropdown-item">
                             <i class="fa fa-gear"></i> Settings
                         </a>
                         <a href="admin/includes/logout.php" class="dropdown-item">
