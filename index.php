@@ -12,10 +12,8 @@ if($session->is_signed_in()) {
 
 include "includes/nav.php";
 include "includes/showcase.php";?>
-
 <!-- CONTENT -->
         <div class="row m-3 px-3">
-        
             <main id="main-content" class="col-lg-9 mt-4 px-0">
                 <div class="card border-0">
                     <div class="card-header pt-3 px-3">
@@ -169,9 +167,9 @@ include "includes/showcase.php";?>
         </div>
 
 <?php
-include "includes/signin_modal.php"; 
-include "includes/add_topic_modal.php"; 
-include "includes/board_settings_modal.php";
+include "includes/modals/signin_modal.php"; 
+include "includes/modals/add_topic_modal.php"; 
+include "includes/modals/board_settings_modal.php";
 
 $script_array = array (
     'js/signin_ajax.js',

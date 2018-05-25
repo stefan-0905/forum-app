@@ -107,8 +107,8 @@ include "includes/showcase.php"; ?>
 
 
 <?php 
-include "includes/signin_modal.php";
-include "includes/confirm_report_modal.php";
+include "includes/modals/signin_modal.php";
+include "includes/modals/confirm_report_modal.php";
 
 $script_array = array(
     'js/signin_ajax.js', 

@@ -137,8 +137,8 @@ include "includes/showcase.php"; ?>
 </div>
 
 <?php
-include "includes/signin_modal.php"; 
-include "includes/add_topic_modal.php"; 
+include "includes/modals/signin_modal.php"; 
+include "includes/modals/add_topic_modal.php"; 
 
 $script_array = array (
     'js/signin_ajax.js',

@@ -61,7 +61,7 @@ if(isset($_POST['register'])) {
 </div>
 
 <?php 
-include "includes/signin_modal.php";
+include "includes/modals/signin_modal.php";
 
 $script_array = array (
     'js/signin_ajax.js',

@@ -69,8 +69,8 @@ include "includes/showcase.php"; ?>
 <?php
 } else redirect("error404.php?message=You are not eligible to do this action");
 
-include "includes/signin_modal.php"; 
-include "includes/add_topic_modal.php"; 
+include "includes/modals/signin_modal.php"; 
+include "includes/modals/add_topic_modal.php"; 
 
 $script_array = array (
     'js/signin_ajax.js',

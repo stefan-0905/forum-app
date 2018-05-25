@@ -39,9 +39,6 @@ include "includes/top_nav.php"; ?>
                 <li class="nav-item">
                     <a class="nav-link" href="board_topic.php"><i class="fa fa-folder-open"></i> Board & Topics</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="comments.php"><i class="fa fa-comments"></i> Comments</a>
-                </li>
             </ul>
         </nav>
     </aside>
