@@ -1,20 +1,27 @@
 <?php
 include_once "../admin/includes/init.php";
-if(isset($_GET['user_id'])) 
-{
-    if(isset($_POST['save_changes']) && !empty($_POST['username']))
+
+try{
+    if(isset($_GET['user_id'])) 
     {
-        $user = User::find($_GET['user_id']);
-        $user->username = $_POST['username'];
-        $user->saveAvatar($_FILES['avatar']);
-        
-        if($user->save())
-            if(!empty($user->errors))
-                redirect('../edit_profile.php?errors='.serialize($user->errors));
-            else redirect('../edit_profile.php');
+        if(isset($_POST['save_changes']) && !empty($_POST['username']))
+        {
+            $user = User::find($_GET['user_id']);
+            $user->username = $_POST['username'];
+            $user->saveAvatar($_FILES['avatar']);
+            
+            if($user->save())
+                if(!empty($user->errors))
+                    redirect('../edit_profile.php?errors='.serialize($user->errors));
+                else redirect('../edit_profile.php');
+        } else {
+            throw new Exception('You are coming from an unknown source');
+        }
+    } else {
+        throw new Exception('Trying to update unknown user.');
     }
-} else {
-    $_SESSION['message'] = "Unknown user";
+} catch(Exception $ex) {
+    redirect("../error404.php?message=".$ex->getMessage());
 }
 
 
