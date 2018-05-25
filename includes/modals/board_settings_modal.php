@@ -45,7 +45,7 @@
                          foreach($selected_topics as $selected_topic) :
                          ?>
                          <li class="border-top pt-2">
-                            <div class="row">
+                            <div class="row no-gutters">
                                 <h5 class="mb-2 col-md-10" title="<?php echo $selected_topic->title; ?>">
                                 <?php 
                                 $title = $selected_topic->title; 
@@ -59,7 +59,7 @@
                                 echo $title;
                                 ?>
                                 </h5>
-                                <a class="delete-topic col-md-2 text-danger" data-id="<?php echo $selected_topic->id; ?>" title="Delete Topic"><i class="fa fa-times"></i></a>
+                                <a class="delete-topic col-md-2 btn btn-sm btn-danger text-light mb-2 py-0" data-id="<?php echo $selected_topic->id; ?>" title="Delete Topic">Delete</i></a>
                             </div>
                         </li>
                          <?php endforeach; ?>
