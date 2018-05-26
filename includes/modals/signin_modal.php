@@ -12,11 +12,11 @@
                 <p class="alert alert-danger d-none"></p>
                 <form id="signinForm" action="" method="POST">
                     <div class="form-group">
-                        <label for="user_username">Username</label>
+                        <label for="user_username">Username: <span class="text-danger">*</span></label>
                         <input id="user_username" name="user_username" type="text" placeholder="Username" class="form-control" required/>
                     </div>
                     <div class="form-group">
-                        <label for="user_password">Password</label>
+                        <label for="user_password">Password: <span class="text-danger">*</span></label>
                         <input id="user_password" name="user_password" type="password" placeholder="Password" class="form-control" required/>
                     </div>
                     <div class="modal-footer pb-0">

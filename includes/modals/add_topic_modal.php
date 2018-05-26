@@ -11,11 +11,11 @@
                 <p class="alert alert-danger d-none"></p>
                 <form id="addTopicForm" method="POST">
                     <div class="form-group">
-                        <label for="title">Title:</label>
+                        <label for="title">Title: <span class="text-danger">*</span></label>
                         <input id="title" name="title" type="text" placeholder="Title" class="form-control" required/>
                     </div>
                     <div class="form-group">
-                        <label for="topic_description">Description:</label>
+                        <label for="topic_description">Description: <span class="text-danger">*</span></label>
                         <textarea placeholder="Description" name="topic_desctiption" id="topic_description" class="form-control w-100"></textarea>
                     </div>
                     <div class="modal-footer pb-0">

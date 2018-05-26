@@ -59,7 +59,7 @@ if(isset($_POST['signin'])) {
         $session->login($user_found);
         echo "Success";
     } else {
-        echo $the_message = "Your password or username is incorrect";
+        echo "Your password or username is incorrect";
     }
 }
 

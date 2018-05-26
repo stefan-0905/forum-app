@@ -16,7 +16,9 @@ $(document).ready(function(){
             success: function (data) {
                 if(!data.error) {
                     console.log(data);
-                    thread_delete_link.parent().parent().parent().remove();
+                    let row = thread_delete_link.parent().parent().parent();
+                    row.next().remove();
+                    row.remove();
                 }
             }
         });

@@ -52,7 +52,7 @@ include "includes/showcase.php"; ?>
                 if($thread && $thread->user_id == $post->user_id) :
                 ?>
                 <div class="form-group">
-                    <label for="thread-subject">Thread Subject:</label>
+                    <label for="thread-subject">Thread Subject: <span class="text-danger">*</span></label>
                     <input type="text" 
                            class="form-control" 
                            name="thread_subject" 
@@ -60,7 +60,7 @@ include "includes/showcase.php"; ?>
                 </div>    
                 <?php endif; ?>
                 <div class="form-group">
-                    <label for="message">Your Message:</label>
+                    <label for="message">Your Message: <span class="text-danger">*</span></label>
                     <textarea rows="5" 
                               placeholder="Message" 
                               id="message" 

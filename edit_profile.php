@@ -117,7 +117,7 @@ include "includes/showcase.php"; ?>
                             }
                             ?>
                             <div class="form-group">
-                                <label for="username">Display Name:</label>
+                                <label for="username">Display Name: <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control w-25" name="username" id="username" required/>
                             </div>
                             <div class="form-group">

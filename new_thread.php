@@ -19,11 +19,11 @@ include "includes/showcase.php"; ?>
         <form class="mb-3" action="includes/create_thread.php?topic_id=<?php if(isset($_GET['topic_id'])) echo $_GET['topic_id']; ?>" method="POST">
         
             <div class="form-group">
-                <label for="subject">Subject:</label>
+                <label for="subject">Subject: <span class="text-danger">*</span></label>
                 <input id="subject" name="subject" type="text" placeholder="Subject" class="form-control" required/>
             </div>
             <div class="form-group">
-                <label for="message">Message:</label>
+                <label for="message">Message: <span class="text-danger">*</span></label>
                 <textarea rows="5" placeholder="Message" id="message" name="content" class="form-control w-100"></textarea>
             </div>
             <input type="hidden" name="user_id" value="<?php echo $session->user_id; ?>">
