@@ -3,6 +3,8 @@
 //defined("DS") ? NULL : define("DS", DIRECTORY_SEPARATOR); // DS represents Directory Separator | Needed only for local version
 define('SITE_ROOT', '//app//'); // for local version C:\xampp\htdocs\forum-app\
 
+date_default_timezone_set('CET');
+
 require_once "functions.php";
 require_once "db_config.php";
 require_once "database.php";
