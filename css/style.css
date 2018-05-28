@@ -31,6 +31,9 @@ body {
     font-size:14px;
   }
 }
+.tab-pane li:hover {
+  text-decoration: underline!important;
+}
 .topic:hover {
   background: #eee; }
 hr {
