@@ -45,6 +45,10 @@ body {
     margin:5px 0;
   }
 
+  #create-item {
+    font-size: 24px;
+  }
+
   .view {
     margin-right: 10px;
   }

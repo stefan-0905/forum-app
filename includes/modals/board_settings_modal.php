@@ -43,7 +43,7 @@
                          aria-labelledby="v-pills-<?php echo $board_item_title; ?>-tab">
                          <ul class="list-unstyled">
                          <?php 
-                         $selected_topics = Topic::getRelatedTopics($board_item->id);
+                         if($selected_topics = Topic::getRelatedTopics($board_item->id))
                          foreach($selected_topics as $selected_topic) :
                          ?>
                          <li class="border-top pt-2">
