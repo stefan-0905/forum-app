@@ -7,12 +7,14 @@ $access_permision = "admin_panel";
 if($session->is_signed_in()) {
     $privU = PrivilegedUser::find($session->user_id);
     if(!$privU->hasPrivilege($access_permision)) {
-        //$session->logout();
         $_SESSION['message'] = "You do not have privilege to access this url";
-        redirect("../index.php");
+        //$session->logout();
+        redirect("signin.php");
     }
-}else
+} else {
+    $_SESSION['message'] = "You must log in as admin first";
     redirect("signin.php");
+}
 
 include "includes/top_nav.php"; ?>
 <div class="row no-gutters">

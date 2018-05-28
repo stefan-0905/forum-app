@@ -1,8 +1,15 @@
 <?php
 include "includes/init.php";
 
-if($session->is_signed_in())
-    redirect("index.php");
+if($session->is_signed_in()) {
+    $access_permision = 'admin_panel';
+    $privU = PrivilegedUser::find($session->user_id);
+    if($privU->hasPrivilege($access_permision)) {
+        redirect("index.php");
+    } else {
+        $session->logout();
+    }
+};
 
 if(isset($_POST['submit'])) {
     $username = trim($_POST['user_username']);
@@ -19,7 +26,7 @@ if(isset($_POST['submit'])) {
         }
     } else $the_message = "Please fill up form before submiting.";
 } else {
-    $the_message = $session->message;
+    $the_message = $session->message();
     $username = "";
     $password = "";
 }
@@ -43,7 +50,9 @@ if(isset($_POST['submit'])) {
     <form class="form-signin" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
         <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"/>
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <h4 class="alert alert-danger"><?php if(isset($the_message)) echo $the_message; ?></h4>
+        <?php if(isset($the_message) && !empty($the_message)) : ?>
+        <p class="alert alert-danger"><?php echo $the_message; ?></p>
+        <?php endif; ?>
         <label for="inputUsername" class="sr-only">Email Username</label>
         <input type="text" id="inputUsername" name="user_username" class="form-control" placeholder="Username" required autofocus/>
         <label for="inputPassword" class="sr-only">Password</label>
