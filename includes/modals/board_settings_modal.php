@@ -9,6 +9,7 @@
             <div class="modal-body">
             <div class="row">
                 <div class="col-4">
+                    <h5>Board</h5>
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <?php 
                     $board_list = BoardList::find_all();
@@ -28,6 +29,7 @@
                     </div>
                 </div>
                 <div class="col-8">
+                    <h5>Topics:</h5>
                     <div class="tab-content" id="v-pills-tabContent">
                     <?php
                     $bulletin_num = 1;
