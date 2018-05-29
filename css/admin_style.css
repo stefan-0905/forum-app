@@ -34,8 +34,13 @@ body {
       border-top-left-radius: 0;
       border-top-right-radius: 0; }
 
-#role-form {
-  width: 350px; }
+
+
+  @media only screen and (min-width: 768px) {
+    #role-form {
+      width: 350px; 
+    } 
+  }
 
 .data-content:hover {
   background-color: #eee; }
