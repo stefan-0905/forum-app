@@ -32,10 +32,10 @@ include "includes/showcase.php"; ?>
             </header>
             <div>
                 <div class="row no-gutters mt-5">
-                    <div class="col-md-8">
+                    <div class="col-md-7 col-sm-6">
                         <h5>Thread</h5>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-5 col-sm-6 d-none d-sm-block">
                         <h5>Last Reply</h5>
                     </div>
                 </div>
@@ -47,7 +47,7 @@ include "includes/showcase.php"; ?>
                     foreach($threads as $thread) {
                 ?>
                 <div class="row no-gutters">
-                    <div class="col-md-8 pr-5">
+                    <div class="col-md-7 col-sm-6">
                         <div class="media my-1 p-1">
                             <?php if($session->is_signed_in() && $privU->hasPrivilege('board_topic_management')) : ?>
                             <a href="#" data-id="<?php echo $thread->id ?>" class="delete-thread text-danger"><i class="fa fa-times"></i></a>
@@ -76,8 +76,8 @@ include "includes/showcase.php"; ?>
                     <?php $latest_post = Post::getLastPost($thread->id);
                         if(!empty($latest_post)) {
                         ?>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="media my-1 p-1 text-md-left text-sm-right">
+                        <div class="col-md-5 col-sm-6 d-none d-sm-block">
+                            <div class="media my-1 p-1 text-md-left text-sm-left">
                                 <img src="img/profile_images/<?php echo User::find($latest_post->user_id)->profile_avatar; ?>" style="width:40px;height:40px;" alt="User Avatar"
                                         class="d-flex mr-3 align-self-center rounded">
                                 <div class="media-body">

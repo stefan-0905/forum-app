@@ -52,10 +52,10 @@ include "includes/top_nav.php"; ?>
                 <div class="mb-5">
                     <h5 class="mb-2">Users with <?php echo $role->name; ?> role</h5>
                     <div class="row no-gutters data-heading py-2">
-                        <div class="col px-2">Id</div>
-                        <div class="col px-2">Email</div>
-                        <div class="col px-2">Username</div>
-                        <div class="col px-2">Controls</div>
+                        <div class="col d-none d-md-block px-2">Id</div>
+                        <div class="col">Email</div>
+                        <div class="col">Username</div>
+                        <div class="col col-md d-none d-md-block">Controls</div>
                     </div>
                     <hr class="m-0">
                     <?php
@@ -65,10 +65,10 @@ include "includes/top_nav.php"; ?>
                     if(!empty($users)){ // Print if we found any user
                     foreach($users as $user) : ?>
                         <div class="row no-gutters data-content py-2">
-                            <div class="col px-2"><?php echo $user->id; ?></div>
-                            <div class="col px-2"><?php echo $user->email; ?></div>
-                            <div class="col px-2"><?php echo $user->username; ?></div>
-                            <div class="col px-2">
+                            <div class="col d-none d-md-block px-2"><?php echo $user->id; ?></div>
+                            <div class="col" style="overflow:hidden;"><?php echo $user->email; ?></div>
+                            <div class="col"><?php echo $user->username; ?></div>
+                            <div class="col col-12 col-md">
                                 <select name="role_change()" id="role-change" class="d-none"><!-- Select option for changing user role -->
                                     <option value="0">Commoner</option>
                                 <?php foreach($roles as $role) : ?>
@@ -88,10 +88,10 @@ include "includes/top_nav.php"; ?>
             <div class="mb-5">
                 <h5 class="mb-2">Common Folks</h5>
                 <div class="row no-gutters data-heading py-2">
-                    <div class="col px-2">Id</div>
-                    <div class="col px-2">Email</div>
-                    <div class="col px-2">Username</div>
-                    <div class="col px-2">Controls</div>
+                    <div class="colcol d-none d-md-block px-2">Id</div>
+                    <div class="col">Email</div>
+                    <div class="col">Username</div>
+                    <div class="col col-md d-none d-md-block">Controls</div>
                 </div>
                 <hr class="m-0">
             <?php
@@ -101,10 +101,10 @@ include "includes/top_nav.php"; ?>
             if(!empty($without_role_users)){
                 foreach($without_role_users as $without_role_user) : ?>
                     <div class="row no-gutters data-content py-2">
-                        <div class="col px-2"><?php echo $without_role_user->id; ?></div>
-                        <div class="col px-2"><?php echo $without_role_user->email; ?></div>
-                        <div class="col px-2"><?php echo $without_role_user->username; ?></div>
-                        <div class="col px-2">
+                        <div class="col d-none d-md-block px-2"><?php echo $without_role_user->id; ?></div>
+                        <div class="col"><?php echo $without_role_user->email; ?></div>
+                        <div class="col"><?php echo $without_role_user->username; ?></div>
+                        <div class="col col-12 col-md">
                             <select name="role_change()" id="role-change" class="d-none">
                             <?php foreach($roles as $role) : ?>
                                 <option value="<?php echo $role->id; ?>"><?php echo $role->name; ?></option>

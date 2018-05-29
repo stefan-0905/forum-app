@@ -50,27 +50,20 @@ include "includes/top_nav.php"; ?>
 <div class="col-md-10">
     <div class="container pt-3">
     <div class="row no-gutters">
-        <div class="col-md-7">
+        <div class="col-md-10 col-lg-7">
             <h3>Manage Your Sites Roles and Permissions</h3>
             <p>Want to create role? Just complete form below.</p>
             <form id="role-form"  action="" method="POST">
                 <div class="form-group">
                     <label for="role_name" class="sr-only">Role Name:</label>
-                    <div class="input-group mb-3">
+                    <div class="mb-3">
                         <input type="text" name="role_name" <?php if(isset($_GET['role_id'])) echo "value='{$edit_role->name}'"; ?> class="form-control" placeholder="Role Name...">
                         <?php if(isset($_GET['role_id'])) echo "<input type='hidden' name='role_id' value='{$edit_role->id}'>"; ?>
-                        <div class="input-group-append">
-                            <?php if(isset($_GET['role_id'])) : ?>
-                            <button id="update_role" type="button" name="update_role" class="form-control btn btn-primary"><?php if(isset($_GET['role_id'])) echo "Save Role"; ?></button>
-                            <?php else : ?>
-                            <button id="create_role" type="button" name="create_role" class="form-control btn btn-primary">Create Role</button>
-                            <?php endif; ?>
-                        </div>
+                        
                     </div>
                 </div>
                 <h4>Access Permissions for Role <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#createPermission">Create New</button></h4>
                 <hr>
-
                 <?php
                 $permissions = Permission::find_all();
                 if(!empty($permissions)) {
@@ -85,10 +78,17 @@ include "includes/top_nav.php"; ?>
                     <label class="form-check-label" for="<?php echo "checkbox" . $i; ?>"><?php echo $permission->name; ?></label>
                 </div>
                 <?php endforeach; } ?>
+                <div class="form-group">
+                    <?php if(isset($_GET['role_id'])) : ?>
+                    <button id="update_role" type="button" name="update_role" class="form-control btn btn-primary"><?php if(isset($_GET['role_id'])) echo "Save Role"; ?></button>
+                    <?php else : ?>
+                    <button id="create_role" type="button" name="create_role" class="form-control btn btn-primary">Create Role</button>
+                    <?php endif; ?>
+                </div>
             </form>
         </div>
         <div class="col-md-5">
-            <div class="container">
+            <div class="container p-0">
                 <h5>Roles currently existing</h5>
                 <table class="table table-hover">
                     <thead><tr><th>Name</th><th>Controls</th></tr></thead>

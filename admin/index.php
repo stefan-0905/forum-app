@@ -51,43 +51,43 @@ include "includes/top_nav.php"; ?>
         <?php $reported_posts = ReportedPost::find_all();
         if(!empty($reported_posts)) :
         ?>
-        <div id="reported-posts" class="col-md-6 border p-3">
+        <div id="reported-posts" class="col border p-3">
         <h6>You have some reported posts you need to attend to.<p class="small">Please check them out down below.</p></h6>
         
         <div class="row">
-            <div class="col-md-4">
+            <div class="col">
                 Reported User
             </div>
-            <div class="col-md-4">
+            <div class="col">
                 Reported By
             </div>
-            <div class="col-md-4">
+            <div class="col col-md-5 d-none d-md-block">
                 Options
             </div>
         </div>
         <hr/>
         <?php foreach($reported_posts as $reported_post) : ?>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col">
             <?php echo User::find(Post::find($reported_post->post_id)->user_id)->username; ?>
             </div>
-            <div class="col-md-4">
+            <div class="col">
             <?php echo User::find($reported_post->reported_by)->username; ?>
             </div>
-            <div class="col-md-4">
-            <a href="../thread.php?thread_id=<?php echo Post::find($reported_post->post_id)->thread_id; ?>#post<?php echo $reported_post->post_id; ?>" 
-               class="view btn btn-sm btn-info">View Post</a>
-            <a data-post-id="<?php echo $reported_post->post_id; ?>"
-               data-report-id="<?php echo $reported_post->id; ?>" 
-               class="approve-report text-success"
-               data-toggle="tooltip" 
-               data-placement="top" 
-               title="Accept Report and Delete Post"><span><i class="fa fa-check"></i></span></a>
-            <a class="reject-report text-danger"
-               data-report-id="<?php echo $reported_post->id; ?>" 
-               data-toggle="tooltip" 
-               data-placement="top" 
-               title="Reject Report"><span><i class="fa fa-times"></i></span></a>
+            <div class="col col-12 col-md-5">
+                <a href="../thread.php?thread_id=<?php echo Post::find($reported_post->post_id)->thread_id; ?>#post<?php echo $reported_post->post_id; ?>" 
+                    class="view btn btn-sm btn-info text-light mr-0 py-0">View Post</a>
+                <a data-post-id="<?php echo $reported_post->post_id; ?>"
+                    data-report-id="<?php echo $reported_post->id; ?>" 
+                    class="approve-report btn btn-sm btn-success text-light py-0"
+                    data-toggle="tooltip" 
+                    data-placement="top" 
+                    title="Accept Report and Delete Post">Approve</a>
+                <a class="reject-report btn btn-sm btn-danger text-light py-0"
+                    data-report-id="<?php echo $reported_post->id; ?>" 
+                    data-toggle="tooltip" 
+                    data-placement="top" 
+                    title="Reject Report">Reject</a>
             </div>
         </div>
         <hr/>

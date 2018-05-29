@@ -42,8 +42,8 @@ include "includes/top_nav.php"; ?>
     </nav>
     </aside>
     <main class="col-md-10">
-        <div class="container pt-2 pl-3">
-            <div id="board-list" class="pull-left card w-50 d-inline-block">
+        <div class="container row m-2 mx-auto">
+            <div id="board-list" class="pull-left card col col-lg-6 px-0 d-inline-block mb-4">
                 <div class="card-header pt-3 px-3">
                     <h3>Board Items</h3>
                     <hr>
@@ -52,7 +52,7 @@ include "includes/top_nav.php"; ?>
                 <div class="card-body pt-2">
                     <ul class="list-unstyled">
                         <li>
-                            <i id="create-item" class="pull-left mt-2 text-success fa fa-plus" title="Create new Board Item"> New Item</i>
+                            <a href="#create-form"><i id="create-item" class="pull-left mt-2 text-success fa fa-plus" title="Create new Board Item"> New Item</i></a>
                         </li>
                         <br>
                         <hr class="mt-4">
@@ -60,10 +60,12 @@ include "includes/top_nav.php"; ?>
                         if($board = BoardList::find_all())
                         foreach($board as $board_item) : ?>
                         <li>
-                            <div>
-                            <h3 class="w-75 d-inline-block"><?php echo $board_item->title; ?></h3>
-                            <span class="edit-title btn btn-sm btn-info mb-2 py-0">Edit</span>
-                            <span data-id=<?php echo $board_item->id; ?> class="delete-item pull-right mt-2 btn btn-sm btn-danger py-0">Delete</span>
+                            <div class="row no-gutters">
+                                <h3 class="col-8 d-inline-block"><?php echo $board_item->title; ?></h3>
+                                <div class="col-12 col-sm d-md-inline-block text-left text-sm-right pt-1">
+                                    <span class="edit-title btn btn-sm btn-info py-0">Edit</span>
+                                    <span data-id=<?php echo $board_item->id; ?> class="delete-item btn btn-sm btn-danger py-0">Delete</span>
+                                </div>
                             </div>
                             <div class="edit-section mt-2" style="display:none;">
                                 <form action="" class="form-inline">
@@ -80,7 +82,7 @@ include "includes/top_nav.php"; ?>
                     </ul>
                 </div>
             </div>
-            <div id='create-form' class='w-50 d-none pl-5'>
+            <div id='create-form' class='col col-12 col-lg-6 d-none'>
                 <div class="card">
                     <div class="card-header">
                         <h5>Create board Item</h5>

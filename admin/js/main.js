@@ -17,8 +17,8 @@ $(document).ready(function() {
                     let role = JSON.parse(data);
                     $("#role_tb tr:last")
                         .after("<tr><td>" + role.name + "</td><td>"
-                            +"<a href='roles.php?role_id="+role.id+"' class='edit-role text-primary'><i class='fa fa-edit'></i></a>"
-                            +"<a data-id=" + role.id + " class='delete_role text-danger'><i class='fa fa-times'></i></a></td></tr>");
+                            +"<a href='roles.php?role_id="+role.id+"' class='edit-role text-primary'><i class='fa fa-edit'></i></a> "
+                            +"<a data-id=" + role.id + " class='delete_role btn btn-sm btn-danger text-light py-0'>Delete</a></td></tr>");
                     //location.reload(true);
                 }
             }

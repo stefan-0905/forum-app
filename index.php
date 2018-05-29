@@ -95,8 +95,8 @@ include "includes/showcase.php";?>
                                 <?php $latest_thread = Thread::getLastThread($topic->id);
                                 if(!empty($latest_thread)) {
                                 ?>
-                                <div class="col-lg-4 col-sm-6">
-                                    <div class="media my-1 p-1 text-md-left text-sm-right">
+                                <div class="col-lg-4 col-sm-6 d-none d-sm-block">
+                                    <div class="media my-1 p-1 text-md-left text-sm-left">
                                         <img src="img/profile_images/<?php echo User::find($latest_thread->user_id)->profile_avatar; ?>" style="width:40px;height:40px;" alt="User Avatar"
                                              class="d-flex mr-3 align-self-center rounded">
                                         <div class="media-body">

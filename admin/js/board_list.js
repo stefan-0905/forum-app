@@ -1,19 +1,21 @@
 $(document).ready(function() {
     $(document).on('click', '.edit-title', function() {
         let edit_btn = $(this);
-        let edit_section = $(this).parent().next();
+        let edit_section = edit_btn.parent().parent().next();
         let display = edit_section.prop('style');
         if(display.display == 'none')
         {
             edit_section.show('2500')
             $(document).on('click', '.update-title', function() {
+                let okay_btn = $(this);
                 let board_item_id = $(this).data('item-id');
                 let title = $(this).prev().children()[1].value;
                 
                 if(title !== "") {
+                    let this_section = okay_btn.parent().parent();
                     update_title(board_item_id, title);
-                    edit_btn.prev().text(title);
-                    edit_section.hide('2500');
+                    this_section.prev().children()[0].innerText = title;
+                    this_section.hide('2500');
                 }
             })
         }
