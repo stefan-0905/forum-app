@@ -42,10 +42,7 @@ include "includes/top_nav.php"; ?>
                 <a class="nav-link" href="users.php"><i class="fa fa-users"></i> Users</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="board_topic.php"><i class="fa fa-folder-open"></i> Board & Topics</a>
-        </li>
-            <li class="nav-item">
-                <a class="nav-link" href="comments.php"><i class="fa fa-comments"></i> Comments</a>
+                <a class="nav-link" href="board_topic.php"><i class="fa fa-folder-open"></i> Board & Topics</a>
             </li>
         </ul>
     </nav>

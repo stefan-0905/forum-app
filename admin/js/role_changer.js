@@ -25,7 +25,6 @@ $(document).ready(function() {
                 success: function(data) {
                     if(!data.error) {
                         //let user = JSON.parse(data);
-                        // console.log(data);
                         location.reload(true);
                     }
                 }
