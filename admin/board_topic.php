@@ -52,19 +52,31 @@ include "includes/top_nav.php"; ?>
                 <div class="card-body pt-2">
                     <ul class="list-unstyled">
                         <li>
-                            <i id="create-item" class="pull-left mt-2 ml-4 text-success fa fa-plus" title="Create new Board Item"></i>
+                            <i id="create-item" class="pull-left mt-2 text-success fa fa-plus" title="Create new Board Item"> New Item</i>
                         </li>
                         <br>
                         <hr class="mt-4">
-                        <?php $board = BoardList::find_all();
+                        <?php 
+                        if($board = BoardList::find_all())
                         foreach($board as $board_item) : ?>
                         <li>
+                            <div>
                             <h3 class="w-75 d-inline-block"><?php echo $board_item->title; ?></h3>
-                            <span class="pull-right mt-2 btn btn-sm btn-danger py-0">Delete</span>
+                            <span class="edit-title btn btn-sm btn-info mb-2 py-0">Edit</span>
+                            <span data-id=<?php echo $board_item->id; ?> class="delete-item pull-right mt-2 btn btn-sm btn-danger py-0">Delete</span>
+                            </div>
+                            <div class="edit-section mt-2" style="display:none;">
+                                <form action="" class="form-inline">
+                                    <div class="form-group mb-2">
+                                        <label for="item-title" class="sr-only">Title</label>
+                                        <input type="text" class="form-control" id="item-title" placeholder="Title" value="<?php echo $board_item->title; ?>">
+                                    </div>
+                                    <button type="button" data-item-id=<?php echo $board_item->id; ?> class="update-title btn btn-primary ml-3 mb-2">Okay</button>
+                                </form>
+                            </div>
                         </li>
                         <hr>
                         <?php endforeach; ?>
-                        
                     </ul>
                 </div>
             </div>
@@ -77,9 +89,9 @@ include "includes/top_nav.php"; ?>
                         <form action="includes/board_list_management.php" method="POST">
                             <form-group>
                                 <label for="item-title">Title:</label>
-                                <input type="text" id='item_title' name='board_item' class="w-75 form-control" required/>
+                                <input type="text" id='item_title' name='board_item' placeholder="Title" class="w-75 form-control" required/>
                             </form-group>
-                            <input type="submit" id="add-item" name="add_item" class="mt-3 btn btn-primary">
+                            <input type="submit" id="add-item" name="add_item" class="mt-3 btn btn-primary" value="Add">
                         </form>
                     </div>
                 </div>

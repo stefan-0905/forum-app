@@ -46,7 +46,11 @@ body {
   }
 
   #create-item {
-    font-size: 24px;
+    font-size: 18px;
+  }
+  #create-item:hover {
+    cursor: pointer!important;
+    font-size:20px;
   }
 
   .view {
