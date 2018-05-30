@@ -7,7 +7,7 @@ $(document).ready(function (){
         $.ajax({
             url: 'includes/ajax_code.php',
             data: {approved_report: true, post_id: post_id, report_id: report_id},
-            type: 'POST',
+            type: 'DELETE',
             success: function(data) {
                 if(!data.error) {
                     console.log(data);

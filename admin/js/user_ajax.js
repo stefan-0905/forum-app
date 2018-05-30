@@ -9,7 +9,7 @@ $(document).ready(function() {
             type: "POST",
             success: function(data) {
                 if(!data.error) {
-                    console.log('Successfully deleted ' + data);
+                    console.log(JSON.parse(data));
                 }
             }
         });

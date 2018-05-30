@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
 
-    $("#create_role").click(function() {
+    $(document).on('click', '#create_role', function() {
         // Create role & update DOM
         let role_name = $('input[name="role_name"]').val();
         let permissions = $('input[name="selected_permissions[]"]:checked');
@@ -9,11 +9,12 @@ $(document).ready(function() {
         for(let i=0;i<permissions.length;i++)
             role_permissions[i] = permissions[i].value;
         $.ajax({
-            url:"includes/ajax_code.php",
+            url:"includes/api/role/create.php",
             data:{create: true, role_name: role_name, role_permissions: role_permissions},
             type: "POST",
             success: function(data) {
                 if(!data.error) {
+                    console.log(data);
                     let role = JSON.parse(data);
                     $("#role_tb tr:last")
                         .after("<tr><td>" + role.name + "</td><td>"
@@ -34,12 +35,11 @@ $(document).ready(function() {
         for(let i=0;i<permissions.length;i++)
             role_permissions[i] = permissions[i].value;
         $.ajax({
-            url:"includes/ajax_code.php",
+            url:"includes/api/role/update.php",
             data:{update: true, role_id: role_id, role_name: role_name, role_permissions: role_permissions},
-            type: "POST",
+            type: "PUT",
             success: function(data) {
                 if(!data.error) {
-                    //console.log(JSON.parse(data)[0].name);
                     location.reload(true);
                 }
             }
@@ -51,9 +51,9 @@ $(document).ready(function() {
         let role_id = $(this).attr('data-id');
         $(this).parent().parent().get(0).remove();
             $.ajax({
-                url:"includes/ajax_code.php",
+                url:"includes/api/role/delete.php",
                 data:{delete: true, role_id: role_id},
-                type: "POST",
+                type: "DELETE",
                 success: function(data) {
                     if(!data.error) {
                         console.log('Successfully deleted ' + data);
