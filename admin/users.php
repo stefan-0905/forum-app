@@ -88,7 +88,7 @@ include "includes/top_nav.php"; ?>
             <div class="mb-5">
                 <h5 class="mb-2">Common Folks</h5>
                 <div class="row no-gutters data-heading py-2">
-                    <div class="colcol d-none d-md-block px-2">Id</div>
+                    <div class="col d-none d-md-block px-2">Id</div>
                     <div class="col">Email</div>
                     <div class="col">Username</div>
                     <div class="col col-md d-none d-md-block">Controls</div>

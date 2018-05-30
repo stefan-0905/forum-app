@@ -15,7 +15,8 @@ if($session->is_signed_in()) {
     redirect("signin.php");
 
 if((isset($_GET['role_id']))) {
-    $edit_role = Role::find($_GET['role_id']);
+    if(!$edit_role = Role::find($_GET['role_id']))
+        redirect("roles.php");
     $edit_role_permissions = Role::getRolePerm($edit_role->id);
 }
 
@@ -50,10 +51,10 @@ include "includes/top_nav.php"; ?>
 <div class="col-md-10">
     <div class="container pt-3">
     <div class="row no-gutters">
-        <div class="col-md-10 col-lg-7">
+        <div class="col-md-10 col-lg-7">        
             <h3>Manage Your Sites Roles and Permissions</h3>
             <p>Want to create role? Just complete form below.</p>
-            <form id="role-form"  action="" method="POST">
+            <form id="role-form" action="" method="POST">
                 <div class="form-group">
                     <label for="role_name" class="sr-only">Role Name:</label>
                     <div class="mb-3">
