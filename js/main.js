@@ -55,7 +55,6 @@ $(document).ready(function(){
                 type: "DELETE",
                 success: function (data) {
                     if(!data.error) {
-                        let data = JSON.parse(data);
                         topic.parent().parent().remove();
 
                         let row = $("a[href='topic.php?topic_id="+data.id+"']").parent().parent().parent().parent().parent();

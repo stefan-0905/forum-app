@@ -25,15 +25,18 @@ $(document).ready(function() {
         $('#create-form').toggleClass('d-inline-block');
     })
     $(document).on('click', '.delete-item', function() {
-        board_item_id = $(this).data('id');
+        let board_item_id = $(this).data('id');
         $.ajax({
-            url: "includes/ajax_code.php",
-            data: {delete_board_item: true, board_item_id: board_item_id},
-            type: "POST",
+            url: "includes/api/board_list/delete.php?board_list_item_id=" + board_item_id,
+            type: "DELETE",
             success: function(data) {
                 if(!data.error){
-                    location.reload(true);
+                    let li = $('span[data-id=' + board_item_id + ']').parent().parent().parent();
+                    li.next().remove();
+                    li.remove();
+                    //location.reload(true);
                 }
+                else console.log(data.error);
             }
         })
     })
@@ -55,11 +58,12 @@ $(document).ready(function() {
 function update_title(id, title)
 {
     $.ajax({
-        url: "includes/ajax_code.php",
-        data: {update_board_item: true, board_item_id: id, board_title: title},
-        type: "POST",
+        url: "includes/api/board_list/update.php?board_list_item_id=" + id,
+        data: { board_title: title },
+        type: "PUT",
         success: function(data) {
             if(!data.error){
+                //console.log(data);
                 //location.reload(true);
             }
         }

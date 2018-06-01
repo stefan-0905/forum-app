@@ -23,7 +23,18 @@ class BoardList extends Db_object
             $new_assoc = array('id' => $row['id'], 'title' => $row['title'], 'description' => $row['description']);
             $this->list_items[] = $new_assoc;
         }
-
+    }
+    public function delete()
+    {
+        $sql = "SELECT * FROM board_list_topics as blt JOIN topics as t ON blt.topic_id = t.id ";
+        $sql .= "WHERE blt.list_id = " . $this->id;
+        $topics = Topic::find_by_query($sql);
+        foreach($topics as $topic)
+        {
+            $topic->delete();
+        }
+        parent::delete();
+        return true;
     }
 }
 
