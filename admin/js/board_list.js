@@ -37,6 +37,19 @@ $(document).ready(function() {
             }
         })
     })
+    $(document).on('click', '#add-item', function() {
+        let board_item_title = $('#new-item-title').get('0').value;
+        $.ajax({
+            url: "includes/api/board_list/create.php",
+            data: { board_item_title: board_item_title },
+            type:  "POST",
+            success: function(data) {
+                if(!data.error) {
+                    location.reload(true);
+                }
+            }
+        })
+    })
 })
 
 function update_title(id, title)

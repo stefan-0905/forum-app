@@ -88,12 +88,12 @@ include "includes/top_nav.php"; ?>
                         <h5>Create board Item</h5>
                     </div>
                     <div class="card-body">
-                        <form action="includes/board_list_management.php" method="POST">
+                        <form method="POST">
                             <form-group>
-                                <label for="item-title">Title:</label>
-                                <input type="text" id='item_title' name='board_item' placeholder="Title" class="w-75 form-control" required/>
+                                <label for="new-item-title">Title:</label>
+                                <input type="text" id='new-item-title' name='board_item' placeholder="Title" class="w-75 form-control" required/>
                             </form-group>
-                            <input type="submit" id="add-item" name="add_item" class="mt-3 btn btn-primary" value="Add">
+                            <input type="button" id="add-item" name="add_item" class="mt-3 btn btn-primary" value="Add">
                         </form>
                     </div>
                 </div>

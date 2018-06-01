@@ -8,10 +8,10 @@ include_once "../../init.php";
 
 try
 {
-    parse_str(file_get_contents("php://input"),$post_vars);
-
-    if(!$thread = thread::find($post_vars['thread_id']))
-        throw new Exception("No thread with this id.");
+    if(!isset($_GET['thread_id']))
+        throw new Exception('You must set thread ID.');
+    if(!$thread = thread::find($_GET['thread_id']))
+        throw new Exception("No thread with this ID.");
     if($thread->delete())
         echo json_encode(
             array('message' => 'Successfully deleted thread')

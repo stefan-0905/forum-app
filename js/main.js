@@ -10,8 +10,7 @@ $(document).ready(function(){
         thread_id = thread_delete_link.data('id');
 
         $.ajax({
-            url: 'admin/includes/api/thread/delete.php',
-            data: {delete_thread: true, thread_id: thread_id},
+            url: 'admin/includes/api/thread/delete.php?thread_id=' + thread_id,
             type: "DELETE",
             success: function (data) {
                 if(!data.error) {
@@ -24,21 +23,20 @@ $(document).ready(function(){
         });
     });
     $('#reportUserModal').on('show.bs.modal', function(e) {
-        let modal = $(this);
         let post_id = e.relatedTarget.dataset['postId'];
-
-        $(document).on('click', '.report', function() {
-            $.ajax({
-                url: 'admin/includes/api/report_post/create.php',
-                data: {report_post: true, post_id: post_id},
-                type: "POST",
-                success: function (data) {
-                    if(!data.error) {
-                        console.log(data);
-                        modal.modal('hide');
-                    }
+        $('#reportUserModal .report').attr('data-post-id', post_id);
+    });
+    $(document).on('click', '.report', function() {
+        let current_post_id = $(this)[0].dataset['postId'];
+        $.ajax({
+            url: 'admin/includes/api/report_post/create.php?post_id=' + current_post_id,
+            type: "POST",
+            success: function (data) {
+                if(!data.error) {
+                    console.log(data);
+                    $('#reportUserModal').modal('hide');
                 }
-            });
+            }
         });
     });
     let board_settings = '#boardSettingsModal';
@@ -53,7 +51,7 @@ $(document).ready(function(){
             let topic_id = topic.data('id');
             $.ajax({
                 url: 'admin/includes/api/topic/delete.php',
-                data: {delete_topic: true, topic_id: topic_id},
+                data: { topic_id: topic_id },
                 type: "DELETE",
                 success: function (data) {
                     if(!data.error) {

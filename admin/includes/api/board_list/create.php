@@ -8,20 +8,19 @@ include_once "../../init.php";
 
 try
 {
-    $reported_post = new ReportedPost();
+    parse_str(file_get_contents("php://input"),$post_vars);
+    $board_list_item = new BoardList();
 
-    if(!isset($_GET['post_id']))
-        throw new Exception("No id set");
-    
-    $post_id = $_GET['post_id'];
+    if(!isset($post_vars['board_item_title']))
+        throw new Exception("No title set");
 
-    $reported_post->post_id = $post_id;
-    $reported_post->reported_by = $session->user_id;
-    
-    if($reported_post->save()){
-        echo json_encode($reported_post);
-        http_response_code('200');
-    }
+    $item_title = trim(strip_tags($post_vars['board_item_title']));
+
+    $board_list_item->title = $item_title;
+
+    if($board_list_item->save())
+        echo json_encode($board_list_item);
+
 } catch(Exception $ex) {
     echo json_encode(
         array('message' => $ex->getMessage())

@@ -4,12 +4,11 @@ $(document).ready(function() {
         let user_id = $(this).attr('data-id');
         $(this).parent().parent().get(0).remove();
         $.ajax({
-            url:"includes/ajax_code.php",
-            data:{delete_user: true, user_id: user_id},
-            type: "POST",
+            url:"includes/api/user/delete.php?user_id=" + user_id,
+            type: "DELETE",
             success: function(data) {
                 if(!data.error) {
-                    console.log(JSON.parse(data));
+                    console.log(data.message);
                 }
             }
         });

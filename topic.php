@@ -50,7 +50,7 @@ include "includes/showcase.php"; ?>
                     <div class="col-md-7 col-sm-6">
                         <div class="media my-1 p-1">
                             <?php if($session->is_signed_in() && $privU->hasPrivilege('board_topic_management')) : ?>
-                            <a href="#" data-id="<?php echo $thread->id ?>" class="delete-thread text-danger"><i class="fa fa-times"></i></a>
+                            <a data-id="<?php echo $thread->id ?>" class="delete-thread text-danger"><i class="fa fa-times"></i></a>
                             <?php endif; ?>
                             <img src="img/thread_default.png" style="width:50px;height:50px;" class="d-flex mr-3 align-self-center">
                             <div class="media-body">
