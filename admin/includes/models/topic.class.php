@@ -24,6 +24,12 @@ class Topic extends Db_object
         if($result) return $result;
         else return false;
     }
+    public function delete()
+    {
+        $this->deleteRelatedThreadsAndPosts();
+        $this->deleteRelationWithBoardList();
+        parent::delete();
+    }
     public function deleteRelatedThreadsAndPosts()
     {
         $sql = "SELECT * FROM threads WHERE topic_id = $this->id";

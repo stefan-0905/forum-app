@@ -11,8 +11,6 @@ try
     parse_str(file_get_contents("php://input"),$post_vars);
     if(!$topic = Topic::find($post_vars['topic_id']))
         throw new Exception("No topic with that id.");
-    $topic->deleteRelatedThreadsAndPosts();
-    $topic->deleteRelationWithBoardList();
     $topic->delete();
     echo json_encode($topic);
 } catch(Exception $ex) {
