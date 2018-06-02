@@ -4,25 +4,6 @@ $site_title = "Register";
 include "includes/header.php";
 include "includes/nav.php";
 include "includes/showcase.php";
-
-
-if(isset($_POST['register'])) {
-    if(!User::check_username($_POST['username'])) {
-        if(!User::check_email($_POST['email'])) {
-            if($_POST['password'] == $_POST['confirm_password']) {
-                if ($new_user = new User()) {
-                    $new_user->email = trim($_POST['email']);
-                    $new_user->username = trim($_POST['username']);
-                    $new_user->password = password_hash(trim($_POST['password']), PASSWORD_DEFAULT);
-
-                    $new_user->save();
-                    $session->login($new_user);
-                    redirect('index.php');
-                }
-            } else $the_message = 'Passwords didnt match.';
-        } else $the_message = 'Email is already taken. Use another.';
-    } else $the_message = 'Username already exists. Try some other.';
-} else $the_message = $session->message;
 ?>
 
 <div class="container mt-5">
@@ -32,10 +13,8 @@ if(isset($_POST['register'])) {
             <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet, assumenda aut autem eaque eius molestiae quaerat rem sint tenetur? Accusantium asperiores, beatae distinctio eius eligendi eveniet incidunt laboriosam odit quos ratione reprehenderit repudiandae sed sint suscipit tempora totam, voluptate?</p>
         </div>
         <div class="col-md-5">
-            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-                <?php if(!empty($the_message)) : ?>
-                <p class="alert alert-danger"><?php echo $the_message; ?></p>
-                <?php endif; ?>
+            <form method="POST">
+                <div id="errors" class="alert alert-danger d-none"></div>
                 <div class="form-group">
                     <label for="username" class="sr-only">Username</label>
                     <input type="text" name="username" id="username" class="form-control" placeholder="Username" required/>
@@ -53,7 +32,7 @@ if(isset($_POST['register'])) {
                     <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Confirm Password" required/>
                 </div>
                 <div class="form-group">
-                    <input type="submit" name="register" value="Register" class="btn btn-primary pull-right"/>
+                    <input id="register" type="button" name="register" value="Register" class="btn btn-primary pull-right"/>
                 </div>
             </form>
         </div>
@@ -64,6 +43,7 @@ if(isset($_POST['register'])) {
 include "includes/modals/signin_modal.php";
 
 $script_array = array (
+    'js/register.js',
     'js/signin_ajax.js',
     'js/main.js'
 );
