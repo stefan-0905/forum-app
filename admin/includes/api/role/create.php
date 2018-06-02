@@ -13,7 +13,7 @@ try
 
     if(isset($post_vars['role_name'])) 
     {
-        $role->name = $post_vars['role_name'];
+        $role->name = trim(strip_tags($post_vars['role_name']));
         if(isset($post_vars['role_permissions']))
             if($role->save()) 
                 foreach ($post_vars['role_permissions'] as $permission)

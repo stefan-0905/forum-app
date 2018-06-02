@@ -13,7 +13,9 @@ try
     if(!isset($_GET['post_id']))
         throw new Exception("No id set");
     
-    $post_id = $_GET['post_id'];
+    if(is_numeric(strip_tags($_GET['post_id'])))
+        $post_id = strip_tags($_GET['post_id']);
+    else throw new Exception("ID is not a number");
 
     $reported_post->post_id = $post_id;
     $reported_post->reported_by = $session->user_id;

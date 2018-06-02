@@ -13,7 +13,7 @@ try
     if(!$role = Role::find($post_vars['role_id']))
         throw new Exception("No Role with this id.");
 
-    $role->name = $post_vars['role_name'];
+    $role->name = trim(strip_tags($post_vars['role_name']));
     $role->save();
     $role_permissions = Role::getRolePerm($role->id);
     
