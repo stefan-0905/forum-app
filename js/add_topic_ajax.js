@@ -1,8 +1,7 @@
 $(document).ready(function () {
     $('#addTopicModal').on('show.bs.modal', function(e) {
 
-        var $modal = $(this),
-            board_item_id = e.relatedTarget.id;
+        let board_item_id = e.relatedTarget.id;
 
         $(document).on('click', '.add-topic', function() {
             let title = $('#title').val();

@@ -6,8 +6,8 @@ $(document).ready(function(){
         $('#reply-it').removeClass('d-none');
     });
     $(document).on('click', '.delete-thread', function(e) {
-        thread_delete_link = $(this);
-        thread_id = thread_delete_link.data('id');
+        let thread_delete_link = $(this);
+        let thread_id = thread_delete_link.data('id');
 
         $.ajax({
             url: 'admin/includes/api/thread/delete.php?thread_id=' + thread_id,

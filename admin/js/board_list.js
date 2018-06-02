@@ -20,12 +20,12 @@ $(document).ready(function() {
             })
         }
         else edit_section.hide('2500');
-    })
+    });
     $(document).on('click', '#create-item', function() {
         $('#create-form').toggleClass('d-inline-block');
-    })
+    });
     $(document).on('click', '.delete-item', function() {
-        board_item_id = $(this).data('id');
+        let board_item_id = $(this).data('id');
         $.ajax({
             url: "includes/ajax_code.php",
             data: {delete_board_item: true, board_item_id: board_item_id},
@@ -36,7 +36,7 @@ $(document).ready(function() {
                 }
             }
         })
-    })
+    });
     $(document).on('click', '#add-item', function() {
         let board_item_title = $('#new-item-title').get('0').value;
         $.ajax({
@@ -50,7 +50,7 @@ $(document).ready(function() {
             }
         })
     })
-})
+});
 
 function update_title(id, title)
 {
