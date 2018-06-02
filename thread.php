@@ -94,10 +94,10 @@ include "includes/showcase.php"; ?>
                 <p><?php echo User::find($session->user_id)->number_of_posts; ?> posts</p>
             </div>
             <div class="col-md-9 px-3">
-                <form action="includes/create_post.php?thread_id=<?php echo $_GET['thread_id']; ?>" method="POST">
+                <form method="POST">
                     <textarea rows="5" placeholder="Message" id="reply" name="reply_message" class="w-100"></textarea>
-                    <input type="hidden" name="user_id" value="<?php echo $session->user_id; ?>"/>
-                    <input type="submit" name="reply" class="btn btn-secondary" value="Reply"/>
+                    <input type="hidden" name="thread_id" value="<?php echo $_GET['thread_id']; ?>"/>
+                    <input type="button" name="reply" class="btn btn-secondary" value="Reply"/>
                 </form>
             </div>
         </div>
@@ -111,6 +111,7 @@ include "includes/modals/signin_modal.php";
 include "includes/modals/confirm_report_modal.php";
 
 $script_array = array(
+    'js/create_post.js',
     'js/signin_ajax.js', 
     'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js',
     'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js',

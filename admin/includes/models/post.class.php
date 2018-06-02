@@ -43,6 +43,18 @@ class Post extends Db_object
 
         return array_shift($row);
     }
+    public function delete()
+    {
+        $user = User::find($this->user_id);
+        $user->number_of_posts--;
+        if($user->save()) {
+            $possible_thread = Thread::find($this->thread_id);  
+            // Checking to see if post is OP, in that case we need to delete it's thread also
+            if($possible_thread->user_id == $session->user_id && $possible_thread->created_at == $post_to_delete->created_at)
+                $possible_thread->delete();
+        }
+        parent::delete();
+    }
 }
 
 

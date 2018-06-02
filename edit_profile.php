@@ -90,7 +90,7 @@ include "includes/showcase.php"; ?>
                                 <div class="user-post-options d-inline w-25 my-auto">
                                     <span class="pull-right">
                                         <a href="edit_post.php?post_id=<?php echo $user_post->id; ?>"><i class="text-warning fa fa-edit"></i></a>
-                                        <a href="includes/update_post.php?delete_post=<?php echo $user_post->id; ?>"><i class="text-danger fa fa-times"></i></a>     
+                                        <a data-post-id=<?php echo $user_post->id; ?> class="delete-post"><i class="text-danger fa fa-times"></i></a>     
                                     </span>
                                 </div>
                             </div>
@@ -141,6 +141,7 @@ include "includes/modals/signin_modal.php";
 include "includes/modals/add_topic_modal.php"; 
 
 $script_array = array (
+    'js/delete_post.js',
     'js/signin_ajax.js',
     'js/main.js'
 );
