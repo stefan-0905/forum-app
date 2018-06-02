@@ -2,9 +2,13 @@ $(document).ready(function(){
     $('.carousel').carousel({
         interval: 4000
     });
+
+    // REPLY
     $(document).on('click', '#quick-reply', function (){
         $('#reply-it').removeClass('d-none');
     });
+
+    // DELETE THREAD
     $(document).on('click', '.delete-thread', function(e) {
         let thread_delete_link = $(this);
         let thread_id = thread_delete_link.data('id');
@@ -22,10 +26,13 @@ $(document).ready(function(){
             }
         });
     });
+
+    // SET RELATED POST_ID ON MODAL
     $('#reportUserModal').on('show.bs.modal', function(e) {
         let post_id = e.relatedTarget.dataset['postId'];
         $('#reportUserModal .report').attr('data-post-id', post_id);
     });
+    // REPORT POST
     $(document).on('click', '.report', function() {
         let current_post_id = $(this)[0].dataset['postId'];
         $.ajax({
@@ -39,7 +46,9 @@ $(document).ready(function(){
             }
         });
     });
+
     let board_settings = '#boardSettingsModal';
+    // DELETE TOPIC FUNCTIOANALITY
     $(board_settings).on('show.bs.modal', function(e) {
         let bulletin = e.relatedTarget.dataset['bulletin'];
         $(".tab-bulletin" + bulletin).addClass('active');
@@ -65,9 +74,11 @@ $(document).ready(function(){
             });
         })
     });
+    // RESET MODAL
     $(board_settings).on('hide.bs.modal', function() {
         $(board_settings+" .nav-link").removeClass('active');
         $(board_settings+" .tab-pane").removeClass('active').removeClass('show');
     })
 
 });
+
