@@ -14,6 +14,11 @@ function register()
 
     if(password == confirm_password)
         register_user(JSON.stringify(data));
+    else { 
+        // Easy validation on front-end
+        document.getElementById('errors').classList.add('d-block');
+        document.getElementById('errors').innerText = "Passwords don't match";
+    }
 }
 
 function register_user(data)
